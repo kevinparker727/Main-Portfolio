@@ -8,25 +8,25 @@ import { motion } from "framer-motion";
 const services = [
   {
     num: "01",
-    title: "Web Development",
+    title: "Applications",
     description: "Lorem Ipsum dolor sit amet consectetur adipisicing elit.",
     href: "",
   },
   {
     num: "02",
-    title: "UI/UX",
+    title: "Landing Pages",
     description: "Lorem Ipsum dolor sit amet consectetur adipisicing elit.",
     href: "",
   },
   {
     num: "03",
-    title: "Logo Design",
+    title: "HTML Emails",
     description: "Lorem Ipsum dolor sit amet consectetur adipisicing elit.",
     href: "",
   },
   {
     num: "04",
-    title: "SEO",
+    title: "Hobbies",
     description: "Lorem Ipsum dolor sit amet consectetur adipisicing elit.",
     href: "",
   },
