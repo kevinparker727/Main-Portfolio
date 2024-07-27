@@ -17,13 +17,6 @@ import {
 } from "@/components/ui/tooltip";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 
-const categories = [
-  { name: "Applications" },
-  { name: "Landing Pages" },
-  { name: "HTML Emails" },
-  { name: "Hobbies" },
-];
-
 const apps = [
   {
     num: "01",
@@ -238,11 +231,26 @@ const hobbies = [
 ];
 
 const Work = () => {
-  const [project, setProject] = useState(apps[0]);
+  const [appProject, setAppProject] = useState(apps[0]);
+  const [landingProject, setLandingProject] = useState(landingPages[0]);
+  const [emailProject, setEmailProject] = useState(HTMLEmails[0]);
+  const [hobbiesProject, setHobbiesProject] = useState(hobbies[0]);
 
-  const handleSlideChange = (swiper) => {
+  const handleAppsSlideChange = (swiper) => {
     const currentIndex = swiper.activeIndex;
-    setProject(apps[currentIndex]);
+    setAppProject(apps[currentIndex]);
+  };
+  const handleLandingSlideChange = (swiper) => {
+    const currentIndex = swiper.activeIndex;
+    setLandingProject(landingPages[currentIndex]);
+  };
+  const handleEmailSlideChange = (swiper) => {
+    const currentIndex = swiper.activeIndex;
+    setEmailProject(HTMLEmails[currentIndex]);
+  };
+  const handleHobbiesSlideChange = (swiper) => {
+    const currentIndex = swiper.activeIndex;
+    setHobbiesProject(hobbies[currentIndex]);
   };
 
   return (
@@ -278,9 +286,170 @@ const Work = () => {
                     spaceBetween={30}
                     slidesPerView={1}
                     className="xl:h-[480px] mb-12"
-                    onSlideChange={handleSlideChange}
+                    onSlideChange={handleAppsSlideChange}
                   >
                     {apps.map((project, index) => {
+                      return (
+                        <SwiperSlide key={index} className="w-full">
+                          <div className=" sm:h-[400px] h-[460px] relative group flex justify-center items-center bg-pink-50/20">
+                            {/* overlay  */}
+
+                            <div className="absolute top-0 bottom-0 w-full h-full bg-black/10 z-10"></div>
+
+                            {/* image  */}
+
+                            <div className="relative w-full h-full">
+                              <Image
+                                src={appProject.image}
+                                fill
+                                className="object-contain"
+                                alt=""
+                              />
+                            </div>
+                          </div>
+                        </SwiperSlide>
+                      );
+                    })}
+
+                    {/* slider buttons  */}
+
+                    <WorkSliderBtns
+                      containerStyles="flex gap-5 absolute right-0 px-3 xl:px-0 bottom-[calc(50%_-_22px)] xl:bottom-0 z-20 justify-between w-full xl:w-max xl:justify-none"
+                      btnStyles="bg-accent hover:bg-accent-hover text-primary text-[22px] w-[44px] h-[44px] flex justify-center items-center transition-all rounded-full"
+                    />
+                  </Swiper>
+                </div>
+
+                {/* project verbeage  */}
+
+                <div className=" xl:gap-[30px] xl:w-[48%]">
+                  <div className="w-full xl:h-[460px] flex flex-col xl:justify-between order-2 xl:order-none">
+                    <div className="flex flex-col gap-[30px] h-[50%]">
+                      {/* outline number */}
+
+                      <div className="text-8xl leading-none font-extrabold text-transparent text-outline flex justify-between">
+                        {appProject.num}
+
+                        {/* buttons  */}
+
+                        <div className="flex items-center gap-4 pb-12 max-xl:hidden">
+                          {/* live project button  */}
+
+                          <Link
+                            href={appProject.live}
+                            className="ring-1 ring-accent rounded-full"
+                          >
+                            <TooltipProvider delayDuration={100}>
+                              <Tooltip>
+                                <TooltipTrigger className="w-[70px] h-[70px] rounded-full bg-white/5 flex justify-center items-center group">
+                                  <BsArrowUpRight className="text-white text-3xl group-hover:text-accent" />
+                                </TooltipTrigger>
+                                <TooltipContent>
+                                  <p>Live Project</p>
+                                </TooltipContent>
+                              </Tooltip>
+                            </TooltipProvider>
+                          </Link>
+
+                          {/* github project button  */}
+
+                          <Link
+                            href={appProject.github}
+                            className="ring-1 ring-accent rounded-full"
+                          >
+                            <TooltipProvider delayDuration={100}>
+                              <Tooltip>
+                                <TooltipTrigger className="w-[70px] h-[70px] rounded-full bg-white/5 flex justify-center items-center group">
+                                  <BsGithub className="text-white text-3xl group-hover:text-accent" />
+                                </TooltipTrigger>
+                                <TooltipContent>
+                                  <p>GitHub Repository</p>
+                                </TooltipContent>
+                              </Tooltip>
+                            </TooltipProvider>
+                          </Link>
+                        </div>
+                      </div>
+
+                      {/* project title  */}
+
+                      <h2 className="text-[42px] font-bold leading-none text-white group-hover:text-accent transition-all duration-500 capitalize">
+                        {appProject.title}
+                      </h2>
+
+                      {/* project category  */}
+
+                      <h2 className="text-[23px] mt-[-15px] font-light leading-none text-white group-hover:text-accent transition-all duration-500 capitalize">
+                        {appProject.category}
+                      </h2>
+
+                      {/* project description  */}
+
+                      <p className="text-white/60">{appProject.description}</p>
+
+                      {/* stack  */}
+
+                      <ul className="flex gap-4 flex-wrap">
+                        {appProject.stack.map((item, index) => {
+                          return (
+                            <li key={index} className="text-xl text-accent">
+                              {item.name}
+                              {index !== appProject.stack.length - 1 && ","}
+                            </li>
+                          );
+                        })}
+                      </ul>
+
+                      {/* border  */}
+
+                      <div className="border border-white/20"></div>
+
+                      {/* buttons  */}
+
+                      <div className="flex items-center gap-4 pb-12 xl:hidden">
+                        {/* live project button  */}
+
+                        <Link href={appProject.live}>
+                          <TooltipProvider delayDuration={100}>
+                            <Tooltip>
+                              <TooltipTrigger className="w-[70px] h-[70px] rounded-full bg-white/5 flex justify-center items-center group">
+                                <BsArrowUpRight className="text-white text-3xl group-hover:text-accent" />
+                              </TooltipTrigger>
+                              <TooltipContent>
+                                <p>Live Project</p>
+                              </TooltipContent>
+                            </Tooltip>
+                          </TooltipProvider>
+                        </Link>
+
+                        {/* github project button  */}
+
+                        <Link href={appProject.github}>
+                          <TooltipProvider delayDuration={100}>
+                            <Tooltip>
+                              <TooltipTrigger className="w-[70px] h-[70px] rounded-full bg-white/5 flex justify-center items-center group">
+                                <BsGithub className="text-white text-3xl group-hover:text-accent" />
+                              </TooltipTrigger>
+                              <TooltipContent>
+                                <p>GitHub Repository</p>
+                              </TooltipContent>
+                            </Tooltip>
+                          </TooltipProvider>
+                        </Link>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </TabsContent>
+              <TabsContent value="landing">
+                <div className="w-full">
+                  <Swiper
+                    spaceBetween={30}
+                    slidesPerView={1}
+                    className="xl:h-[480px] mb-12"
+                    onSlideChange={handleLandingSlideChange}
+                  >
+                    {landingPages.map((project, index) => {
                       return (
                         <SwiperSlide key={index} className="w-full">
                           <div className=" sm:h-[400px] h-[460px] relative group flex justify-center items-center bg-pink-50/20">
@@ -311,131 +480,456 @@ const Work = () => {
                     />
                   </Swiper>
                 </div>
-              </TabsContent>
-              <TabsContent value="landing">Landing</TabsContent>
-              <TabsContent value="emails">HTML Emails</TabsContent>
-              <TabsContent value="hobbies">Hobbies</TabsContent>
-            </div>
 
-            {/* project verbeage  */}
+                {/* project verbeage  */}
 
-            <div className=" xl:gap-[30px] xl:w-[48%]">
-              <div className="w-full xl:h-[460px] flex flex-col xl:justify-between order-2 xl:order-none">
-                <div className="flex flex-col gap-[30px] h-[50%]">
-                  {/* outline number */}
+                <div className=" xl:gap-[30px] xl:w-[48%]">
+                  <div className="w-full xl:h-[460px] flex flex-col xl:justify-between order-2 xl:order-none">
+                    <div className="flex flex-col gap-[30px] h-[50%]">
+                      {/* outline number */}
 
-                  <div className="text-8xl leading-none font-extrabold text-transparent text-outline flex justify-between">
-                    {project.num}
+                      <div className="text-8xl leading-none font-extrabold text-transparent text-outline flex justify-between">
+                        {landingProject.num}
 
-                    {/* buttons  */}
+                        {/* buttons  */}
 
-                    <div className="flex items-center gap-4 pb-12 max-xl:hidden">
-                      {/* live project button  */}
+                        <div className="flex items-center gap-4 pb-12 max-xl:hidden">
+                          {/* live project button  */}
 
-                      <Link
-                        href={project.live}
-                        className="ring-1 ring-accent rounded-full"
-                      >
-                        <TooltipProvider delayDuration={100}>
-                          <Tooltip>
-                            <TooltipTrigger className="w-[70px] h-[70px] rounded-full bg-white/5 flex justify-center items-center group">
-                              <BsArrowUpRight className="text-white text-3xl group-hover:text-accent" />
-                            </TooltipTrigger>
-                            <TooltipContent>
-                              <p>Live Project</p>
-                            </TooltipContent>
-                          </Tooltip>
-                        </TooltipProvider>
-                      </Link>
+                          <Link
+                            href={landingProject.live}
+                            className="ring-1 ring-accent rounded-full"
+                          >
+                            <TooltipProvider delayDuration={100}>
+                              <Tooltip>
+                                <TooltipTrigger className="w-[70px] h-[70px] rounded-full bg-white/5 flex justify-center items-center group">
+                                  <BsArrowUpRight className="text-white text-3xl group-hover:text-accent" />
+                                </TooltipTrigger>
+                                <TooltipContent>
+                                  <p>Live Project</p>
+                                </TooltipContent>
+                              </Tooltip>
+                            </TooltipProvider>
+                          </Link>
 
-                      {/* github project button  */}
+                          {/* github project button  */}
 
-                      <Link
-                        href={project.github}
-                        className="ring-1 ring-accent rounded-full"
-                      >
-                        <TooltipProvider delayDuration={100}>
-                          <Tooltip>
-                            <TooltipTrigger className="w-[70px] h-[70px] rounded-full bg-white/5 flex justify-center items-center group">
-                              <BsGithub className="text-white text-3xl group-hover:text-accent" />
-                            </TooltipTrigger>
-                            <TooltipContent>
-                              <p>GitHub Repository</p>
-                            </TooltipContent>
-                          </Tooltip>
-                        </TooltipProvider>
-                      </Link>
+                          <Link
+                            href={landingProject.github}
+                            className="ring-1 ring-accent rounded-full"
+                          >
+                            <TooltipProvider delayDuration={100}>
+                              <Tooltip>
+                                <TooltipTrigger className="w-[70px] h-[70px] rounded-full bg-white/5 flex justify-center items-center group">
+                                  <BsGithub className="text-white text-3xl group-hover:text-accent" />
+                                </TooltipTrigger>
+                                <TooltipContent>
+                                  <p>GitHub Repository</p>
+                                </TooltipContent>
+                              </Tooltip>
+                            </TooltipProvider>
+                          </Link>
+                        </div>
+                      </div>
+
+                      {/* project title  */}
+
+                      <h2 className="text-[42px] font-bold leading-none text-white group-hover:text-accent transition-all duration-500 capitalize">
+                        {landingProject.title}
+                      </h2>
+
+                      {/* project category  */}
+
+                      <h2 className="text-[23px] mt-[-15px] font-light leading-none text-white group-hover:text-accent transition-all duration-500 capitalize">
+                        {landingProject.category}
+                      </h2>
+
+                      {/* project description  */}
+
+                      <p className="text-white/60">
+                        {landingProject.description}
+                      </p>
+
+                      {/* stack  */}
+
+                      <ul className="flex gap-4 flex-wrap">
+                        {landingProject.stack.map((item, index) => {
+                          return (
+                            <li key={index} className="text-xl text-accent">
+                              {item.name}
+                              {index !== landingProject.stack.length - 1 && ","}
+                            </li>
+                          );
+                        })}
+                      </ul>
+
+                      {/* border  */}
+
+                      <div className="border border-white/20"></div>
+
+                      {/* buttons  */}
+
+                      <div className="flex items-center gap-4 pb-12 xl:hidden">
+                        {/* live project button  */}
+
+                        <Link href={landingProject.live}>
+                          <TooltipProvider delayDuration={100}>
+                            <Tooltip>
+                              <TooltipTrigger className="w-[70px] h-[70px] rounded-full bg-white/5 flex justify-center items-center group">
+                                <BsArrowUpRight className="text-white text-3xl group-hover:text-accent" />
+                              </TooltipTrigger>
+                              <TooltipContent>
+                                <p>Live Project</p>
+                              </TooltipContent>
+                            </Tooltip>
+                          </TooltipProvider>
+                        </Link>
+
+                        {/* github project button  */}
+
+                        <Link href={landingProject.github}>
+                          <TooltipProvider delayDuration={100}>
+                            <Tooltip>
+                              <TooltipTrigger className="w-[70px] h-[70px] rounded-full bg-white/5 flex justify-center items-center group">
+                                <BsGithub className="text-white text-3xl group-hover:text-accent" />
+                              </TooltipTrigger>
+                              <TooltipContent>
+                                <p>GitHub Repository</p>
+                              </TooltipContent>
+                            </Tooltip>
+                          </TooltipProvider>
+                        </Link>
+                      </div>
                     </div>
                   </div>
-
-                  {/* project title  */}
-
-                  <h2 className="text-[42px] font-bold leading-none text-white group-hover:text-accent transition-all duration-500 capitalize">
-                    {project.title}
-                  </h2>
-
-                  {/* project category  */}
-
-                  <h2 className="text-[23px] mt-[-15px] font-light leading-none text-white group-hover:text-accent transition-all duration-500 capitalize">
-                    {project.category}
-                  </h2>
-
-                  {/* project description  */}
-
-                  <p className="text-white/60">{project.description}</p>
-
-                  {/* stack  */}
-
-                  <ul className="flex gap-4 flex-wrap">
-                    {project.stack.map((item, index) => {
+                </div>
+              </TabsContent>
+              <TabsContent value="emails">
+                <div className="w-full">
+                  <Swiper
+                    spaceBetween={30}
+                    slidesPerView={1}
+                    className="xl:h-[480px] mb-12"
+                    onSlideChange={handleEmailSlideChange}
+                  >
+                    {HTMLEmails.map((project, index) => {
                       return (
-                        <li key={index} className="text-xl text-accent">
-                          {item.name}
-                          {index !== project.stack.length - 1 && ","}
-                        </li>
+                        <SwiperSlide key={index} className="w-full">
+                          <div className=" sm:h-[400px] h-[460px] relative group flex justify-center items-center bg-pink-50/20">
+                            {/* overlay  */}
+
+                            <div className="absolute top-0 bottom-0 w-full h-full bg-black/10 z-10"></div>
+
+                            {/* image  */}
+
+                            <div className="relative w-full h-full">
+                              <Image
+                                src={project.image}
+                                fill
+                                className="object-contain"
+                                alt=""
+                              />
+                            </div>
+                          </div>
+                        </SwiperSlide>
                       );
                     })}
-                  </ul>
 
-                  {/* border  */}
+                    {/* slider buttons  */}
 
-                  <div className="border border-white/20"></div>
+                    <WorkSliderBtns
+                      containerStyles="flex gap-5 absolute right-0 px-3 xl:px-0 bottom-[calc(50%_-_22px)] xl:bottom-0 z-20 justify-between w-full xl:w-max xl:justify-none"
+                      btnStyles="bg-accent hover:bg-accent-hover text-primary text-[22px] w-[44px] h-[44px] flex justify-center items-center transition-all rounded-full"
+                    />
+                  </Swiper>
+                </div>
 
-                  {/* buttons  */}
+                {/* project verbeage  */}
 
-                  <div className="flex items-center gap-4 pb-12 xl:hidden">
-                    {/* live project button  */}
+                <div className=" xl:gap-[30px] xl:w-[48%]">
+                  <div className="w-full xl:h-[460px] flex flex-col xl:justify-between order-2 xl:order-none">
+                    <div className="flex flex-col gap-[30px] h-[50%]">
+                      {/* outline number */}
 
-                    <Link href={project.live}>
-                      <TooltipProvider delayDuration={100}>
-                        <Tooltip>
-                          <TooltipTrigger className="w-[70px] h-[70px] rounded-full bg-white/5 flex justify-center items-center group">
-                            <BsArrowUpRight className="text-white text-3xl group-hover:text-accent" />
-                          </TooltipTrigger>
-                          <TooltipContent>
-                            <p>Live Project</p>
-                          </TooltipContent>
-                        </Tooltip>
-                      </TooltipProvider>
-                    </Link>
+                      <div className="text-8xl leading-none font-extrabold text-transparent text-outline flex justify-between">
+                        {emailProject.num}
 
-                    {/* github project button  */}
+                        {/* buttons  */}
 
-                    <Link href={project.github}>
-                      <TooltipProvider delayDuration={100}>
-                        <Tooltip>
-                          <TooltipTrigger className="w-[70px] h-[70px] rounded-full bg-white/5 flex justify-center items-center group">
-                            <BsGithub className="text-white text-3xl group-hover:text-accent" />
-                          </TooltipTrigger>
-                          <TooltipContent>
-                            <p>GitHub Repository</p>
-                          </TooltipContent>
-                        </Tooltip>
-                      </TooltipProvider>
-                    </Link>
+                        <div className="flex items-center gap-4 pb-12 max-xl:hidden">
+                          {/* live project button  */}
+
+                          <Link
+                            href={emailProject.live}
+                            className="ring-1 ring-accent rounded-full"
+                          >
+                            <TooltipProvider delayDuration={100}>
+                              <Tooltip>
+                                <TooltipTrigger className="w-[70px] h-[70px] rounded-full bg-white/5 flex justify-center items-center group">
+                                  <BsArrowUpRight className="text-white text-3xl group-hover:text-accent" />
+                                </TooltipTrigger>
+                                <TooltipContent>
+                                  <p>Live Project</p>
+                                </TooltipContent>
+                              </Tooltip>
+                            </TooltipProvider>
+                          </Link>
+
+                          {/* github project button  */}
+
+                          <Link
+                            href={emailProject.github}
+                            className="ring-1 ring-accent rounded-full"
+                          >
+                            <TooltipProvider delayDuration={100}>
+                              <Tooltip>
+                                <TooltipTrigger className="w-[70px] h-[70px] rounded-full bg-white/5 flex justify-center items-center group">
+                                  <BsGithub className="text-white text-3xl group-hover:text-accent" />
+                                </TooltipTrigger>
+                                <TooltipContent>
+                                  <p>GitHub Repository</p>
+                                </TooltipContent>
+                              </Tooltip>
+                            </TooltipProvider>
+                          </Link>
+                        </div>
+                      </div>
+
+                      {/* project title  */}
+
+                      <h2 className="text-[42px] font-bold leading-none text-white group-hover:text-accent transition-all duration-500 capitalize">
+                        {emailProject.title}
+                      </h2>
+
+                      {/* project category  */}
+
+                      <h2 className="text-[23px] mt-[-15px] font-light leading-none text-white group-hover:text-accent transition-all duration-500 capitalize">
+                        {emailProject.category}
+                      </h2>
+
+                      {/* project description  */}
+
+                      <p className="text-white/60">
+                        {emailProject.description}
+                      </p>
+
+                      {/* stack  */}
+
+                      <ul className="flex gap-4 flex-wrap">
+                        {emailProject.stack.map((item, index) => {
+                          return (
+                            <li key={index} className="text-xl text-accent">
+                              {item.name}
+                              {index !== emailProject.stack.length - 1 && ","}
+                            </li>
+                          );
+                        })}
+                      </ul>
+
+                      {/* border  */}
+
+                      <div className="border border-white/20"></div>
+
+                      {/* buttons  */}
+
+                      <div className="flex items-center gap-4 pb-12 xl:hidden">
+                        {/* live project button  */}
+
+                        <Link href={emailProject.live}>
+                          <TooltipProvider delayDuration={100}>
+                            <Tooltip>
+                              <TooltipTrigger className="w-[70px] h-[70px] rounded-full bg-white/5 flex justify-center items-center group">
+                                <BsArrowUpRight className="text-white text-3xl group-hover:text-accent" />
+                              </TooltipTrigger>
+                              <TooltipContent>
+                                <p>Live Project</p>
+                              </TooltipContent>
+                            </Tooltip>
+                          </TooltipProvider>
+                        </Link>
+
+                        {/* github project button  */}
+
+                        <Link href={emailProject.github}>
+                          <TooltipProvider delayDuration={100}>
+                            <Tooltip>
+                              <TooltipTrigger className="w-[70px] h-[70px] rounded-full bg-white/5 flex justify-center items-center group">
+                                <BsGithub className="text-white text-3xl group-hover:text-accent" />
+                              </TooltipTrigger>
+                              <TooltipContent>
+                                <p>GitHub Repository</p>
+                              </TooltipContent>
+                            </Tooltip>
+                          </TooltipProvider>
+                        </Link>
+                      </div>
+                    </div>
                   </div>
                 </div>
-              </div>
+              </TabsContent>
+              <TabsContent value="hobbies">
+                <div className="w-full">
+                  <Swiper
+                    spaceBetween={30}
+                    slidesPerView={1}
+                    className="xl:h-[480px] mb-12"
+                    onSlideChange={handleHobbiesSlideChange}
+                  >
+                    {hobbies.map((project, index) => {
+                      return (
+                        <SwiperSlide key={index} className="w-full">
+                          <div className=" sm:h-[400px] h-[460px] relative group flex justify-center items-center bg-pink-50/20">
+                            {/* overlay  */}
+
+                            <div className="absolute top-0 bottom-0 w-full h-full bg-black/10 z-10"></div>
+
+                            {/* image  */}
+
+                            <div className="relative w-full h-full">
+                              <Image
+                                src={project.image}
+                                fill
+                                className="object-contain"
+                                alt=""
+                              />
+                            </div>
+                          </div>
+                        </SwiperSlide>
+                      );
+                    })}
+
+                    {/* slider buttons  */}
+
+                    <WorkSliderBtns
+                      containerStyles="flex gap-5 absolute right-0 px-3 xl:px-0 bottom-[calc(50%_-_22px)] xl:bottom-0 z-20 justify-between w-full xl:w-max xl:justify-none"
+                      btnStyles="bg-accent hover:bg-accent-hover text-primary text-[22px] w-[44px] h-[44px] flex justify-center items-center transition-all rounded-full"
+                    />
+                  </Swiper>
+                </div>
+
+                {/* project verbeage  */}
+
+                <div className=" xl:gap-[30px] xl:w-[48%]">
+                  <div className="w-full xl:h-[460px] flex flex-col xl:justify-between order-2 xl:order-none">
+                    <div className="flex flex-col gap-[30px] h-[50%]">
+                      {/* outline number */}
+
+                      <div className="text-8xl leading-none font-extrabold text-transparent text-outline flex justify-between">
+                        {hobbiesProject.num}
+
+                        {/* buttons  */}
+
+                        <div className="flex items-center gap-4 pb-12 max-xl:hidden">
+                          {/* live project button  */}
+
+                          <Link
+                            href={hobbiesProject.live}
+                            className="ring-1 ring-accent rounded-full"
+                          >
+                            <TooltipProvider delayDuration={100}>
+                              <Tooltip>
+                                <TooltipTrigger className="w-[70px] h-[70px] rounded-full bg-white/5 flex justify-center items-center group">
+                                  <BsArrowUpRight className="text-white text-3xl group-hover:text-accent" />
+                                </TooltipTrigger>
+                                <TooltipContent>
+                                  <p>Live Project</p>
+                                </TooltipContent>
+                              </Tooltip>
+                            </TooltipProvider>
+                          </Link>
+
+                          {/* github project button  */}
+
+                          <Link
+                            href={hobbiesProject.github}
+                            className="ring-1 ring-accent rounded-full"
+                          >
+                            <TooltipProvider delayDuration={100}>
+                              <Tooltip>
+                                <TooltipTrigger className="w-[70px] h-[70px] rounded-full bg-white/5 flex justify-center items-center group">
+                                  <BsGithub className="text-white text-3xl group-hover:text-accent" />
+                                </TooltipTrigger>
+                                <TooltipContent>
+                                  <p>GitHub Repository</p>
+                                </TooltipContent>
+                              </Tooltip>
+                            </TooltipProvider>
+                          </Link>
+                        </div>
+                      </div>
+
+                      {/* project title  */}
+
+                      <h2 className="text-[42px] font-bold leading-none text-white group-hover:text-accent transition-all duration-500 capitalize">
+                        {hobbiesProject.title}
+                      </h2>
+
+                      {/* project category  */}
+
+                      <h2 className="text-[23px] mt-[-15px] font-light leading-none text-white group-hover:text-accent transition-all duration-500 capitalize">
+                        {hobbiesProject.category}
+                      </h2>
+
+                      {/* project description  */}
+
+                      <p className="text-white/60">
+                        {hobbiesProject.description}
+                      </p>
+
+                      {/* stack  */}
+
+                      <ul className="flex gap-4 flex-wrap">
+                        {hobbiesProject.stack.map((item, index) => {
+                          return (
+                            <li key={index} className="text-xl text-accent">
+                              {item.name}
+                              {index !== hobbiesProject.stack.length - 1 && ","}
+                            </li>
+                          );
+                        })}
+                      </ul>
+
+                      {/* border  */}
+
+                      <div className="border border-white/20"></div>
+
+                      {/* buttons  */}
+
+                      <div className="flex items-center gap-4 pb-12 xl:hidden">
+                        {/* live project button  */}
+
+                        <Link href={hobbiesProject.live}>
+                          <TooltipProvider delayDuration={100}>
+                            <Tooltip>
+                              <TooltipTrigger className="w-[70px] h-[70px] rounded-full bg-white/5 flex justify-center items-center group">
+                                <BsArrowUpRight className="text-white text-3xl group-hover:text-accent" />
+                              </TooltipTrigger>
+                              <TooltipContent>
+                                <p>Live Project</p>
+                              </TooltipContent>
+                            </Tooltip>
+                          </TooltipProvider>
+                        </Link>
+
+                        {/* github project button  */}
+
+                        <Link href={hobbiesProject.github}>
+                          <TooltipProvider delayDuration={100}>
+                            <Tooltip>
+                              <TooltipTrigger className="w-[70px] h-[70px] rounded-full bg-white/5 flex justify-center items-center group">
+                                <BsGithub className="text-white text-3xl group-hover:text-accent" />
+                              </TooltipTrigger>
+                              <TooltipContent>
+                                <p>GitHub Repository</p>
+                              </TooltipContent>
+                            </Tooltip>
+                          </TooltipProvider>
+                        </Link>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </TabsContent>
             </div>
           </div>
         </Tabs>

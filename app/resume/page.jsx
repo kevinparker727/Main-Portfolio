@@ -20,7 +20,6 @@ import {
 } from "@/components/ui/tooltip";
 import { ScrollArea } from "@/components/ui/scroll-area";
 import { motion } from "framer-motion";
-import { Scroll } from "lucide-react";
 
 // about data
 
