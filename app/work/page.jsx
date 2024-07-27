@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 
 import { motion } from "framer-motion";
 import Link from "next/link";
@@ -16,13 +16,6 @@ import {
   TooltipTrigger,
 } from "@/components/ui/tooltip";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-
-const categories = [
-  { name: "Applications" },
-  { name: "Landing Pages" },
-  { name: "HTML Emails" },
-  { name: "Hobbies" },
-];
 
 const apps = [
   {
@@ -237,12 +230,49 @@ const hobbies = [
   },
 ];
 
+const ImageContainer = ({ project }) => (
+  <SwiperSlide className="w-full">
+    <div className="sm:h-[400px] h-[460px] relative group flex justify-center items-center bg-pink-50/20">
+      {/* overlay  */}
+      <div className="absolute top-0 bottom-0 w-full h-full bg-black/10 z-10"></div>
+      {/* image  */}
+      <div className="relative w-full h-full">
+        <Image src={project.image} fill className="object-contain" alt="" />
+      </div>
+    </div>
+  </SwiperSlide>
+);
+
 const Work = () => {
-  const [project, setProject] = useState(apps[0]);
+  const [currentIndex, setCurrentIndex] = useState(0);
+  const [project, setProject] = useState(apps);
+
+  const [category, setCategory] = useState("apps");
+
+  console.log(category, project);
+
+  useEffect(() => {
+    switch (category) {
+      case "apps":
+        setProject(apps);
+        break;
+      case "landing":
+        setProject(landingPages);
+        break;
+      case "emails":
+        setProject(HTMLEmails);
+        break;
+      case "hobbies":
+        setProject(hobbies);
+        break;
+      default:
+        setProject(apps);
+    }
+  }, [category]);
 
   const handleSlideChange = (swiper) => {
     const currentIndex = swiper.activeIndex;
-    setProject(apps[currentIndex]);
+    setCurrentIndex(currentIndex);
   };
 
   return (
@@ -260,10 +290,21 @@ const Work = () => {
           className="flex flex-col xl:justify-center w-full gap-[20px]"
         >
           <TabsList className="flex justify-center max-w-[470px] sm:max-w-[600px] lg:max-w-[800px] md:pb-4 xl:pb-10 mx-auto xl:mx-0 gap-6">
-            <TabsTrigger value="applications">Apps</TabsTrigger>
-            <TabsTrigger value="landing">Landing</TabsTrigger>
-            <TabsTrigger value="emails">Emails</TabsTrigger>
-            <TabsTrigger value="hobbies">Hobbies</TabsTrigger>
+            <TabsTrigger
+              onClick={() => setCategory("apps")}
+              value="applications"
+            >
+              Apps
+            </TabsTrigger>
+            <TabsTrigger onClick={() => setCategory("landing")} value="landing">
+              Landing
+            </TabsTrigger>
+            <TabsTrigger onClick={() => setCategory("emails")} value="emails">
+              Emails
+            </TabsTrigger>
+            <TabsTrigger onClick={() => setCategory("hobbies")} value="hobbies">
+              Hobbies
+            </TabsTrigger>
           </TabsList>
 
           {/* project display  */}
@@ -312,9 +353,126 @@ const Work = () => {
                   </Swiper>
                 </div>
               </TabsContent>
-              <TabsContent value="landing">Landing</TabsContent>
-              <TabsContent value="emails">HTML Emails</TabsContent>
-              <TabsContent value="hobbies">Hobbies</TabsContent>
+              <TabsContent value="landing">
+                <div className="w-full">
+                  <Swiper
+                    spaceBetween={30}
+                    slidesPerView={1}
+                    className="xl:h-[480px] mb-12"
+                    onSlideChange={handleSlideChange}
+                  >
+                    {landingPages.map((project, index) => {
+                      return (
+                        <SwiperSlide key={index} className="w-full">
+                          <div className=" sm:h-[400px] h-[460px] relative group flex justify-center items-center bg-pink-50/20">
+                            {/* overlay  */}
+
+                            <div className="absolute top-0 bottom-0 w-full h-full bg-black/10 z-10"></div>
+
+                            {/* image  */}
+
+                            <div className="relative w-full h-full">
+                              <Image
+                                src={project.image}
+                                fill
+                                className="object-contain"
+                                alt=""
+                              />
+                            </div>
+                          </div>
+                        </SwiperSlide>
+                      );
+                    })}
+
+                    {/* slider buttons  */}
+
+                    <WorkSliderBtns
+                      containerStyles="flex gap-5 absolute right-0 px-3 xl:px-0 bottom-[calc(50%_-_22px)] xl:bottom-0 z-20 justify-between w-full xl:w-max xl:justify-none"
+                      btnStyles="bg-accent hover:bg-accent-hover text-primary text-[22px] w-[44px] h-[44px] flex justify-center items-center transition-all rounded-full"
+                    />
+                  </Swiper>
+                </div>
+              </TabsContent>
+              <TabsContent value="emails">
+                <div className="w-full">
+                  <Swiper
+                    spaceBetween={30}
+                    slidesPerView={1}
+                    className="xl:h-[480px] mb-12"
+                    onSlideChange={handleSlideChange}
+                  >
+                    {HTMLEmails.map((project, index) => {
+                      return (
+                        <SwiperSlide key={index} className="w-full">
+                          <div className=" sm:h-[400px] h-[460px] relative group flex justify-center items-center bg-pink-50/20">
+                            {/* overlay  */}
+
+                            <div className="absolute top-0 bottom-0 w-full h-full bg-black/10 z-10"></div>
+
+                            {/* image  */}
+
+                            <div className="relative w-full h-full">
+                              <Image
+                                src={project.image}
+                                fill
+                                className="object-contain"
+                                alt=""
+                              />
+                            </div>
+                          </div>
+                        </SwiperSlide>
+                      );
+                    })}
+
+                    {/* slider buttons  */}
+
+                    <WorkSliderBtns
+                      containerStyles="flex gap-5 absolute right-0 px-3 xl:px-0 bottom-[calc(50%_-_22px)] xl:bottom-0 z-20 justify-between w-full xl:w-max xl:justify-none"
+                      btnStyles="bg-accent hover:bg-accent-hover text-primary text-[22px] w-[44px] h-[44px] flex justify-center items-center transition-all rounded-full"
+                    />
+                  </Swiper>
+                </div>
+              </TabsContent>
+              <TabsContent value="hobbies">
+                <div className="w-full">
+                  <Swiper
+                    spaceBetween={30}
+                    slidesPerView={1}
+                    className="xl:h-[480px] mb-12"
+                    onSlideChange={handleSlideChange}
+                  >
+                    {hobbies.map((project, index) => {
+                      return (
+                        <SwiperSlide key={index} className="w-full">
+                          <div className=" sm:h-[400px] h-[460px] relative group flex justify-center items-center bg-pink-50/20">
+                            {/* overlay  */}
+
+                            <div className="absolute top-0 bottom-0 w-full h-full bg-black/10 z-10"></div>
+
+                            {/* image  */}
+
+                            <div className="relative w-full h-full">
+                              <Image
+                                src={project.image}
+                                fill
+                                className="object-contain"
+                                alt=""
+                              />
+                            </div>
+                          </div>
+                        </SwiperSlide>
+                      );
+                    })}
+
+                    {/* slider buttons  */}
+
+                    <WorkSliderBtns
+                      containerStyles="flex gap-5 absolute right-0 px-3 xl:px-0 bottom-[calc(50%_-_22px)] xl:bottom-0 z-20 justify-between w-full xl:w-max xl:justify-none"
+                      btnStyles="bg-accent hover:bg-accent-hover text-primary text-[22px] w-[44px] h-[44px] flex justify-center items-center transition-all rounded-full"
+                    />
+                  </Swiper>
+                </div>
+              </TabsContent>
             </div>
 
             {/* project verbeage  */}
@@ -325,7 +483,7 @@ const Work = () => {
                   {/* outline number */}
 
                   <div className="text-8xl leading-none font-extrabold text-transparent text-outline flex justify-between">
-                    {project.num}
+                    {project[currentIndex].num}
 
                     {/* buttons  */}
 
@@ -333,7 +491,7 @@ const Work = () => {
                       {/* live project button  */}
 
                       <Link
-                        href={project.live}
+                        href={project[currentIndex].live}
                         className="ring-1 ring-accent rounded-full"
                       >
                         <TooltipProvider delayDuration={100}>
@@ -351,7 +509,7 @@ const Work = () => {
                       {/* github project button  */}
 
                       <Link
-                        href={project.github}
+                        href={project[currentIndex].github}
                         className="ring-1 ring-accent rounded-full"
                       >
                         <TooltipProvider delayDuration={100}>
@@ -371,27 +529,30 @@ const Work = () => {
                   {/* project title  */}
 
                   <h2 className="text-[42px] font-bold leading-none text-white group-hover:text-accent transition-all duration-500 capitalize">
-                    {project.title}
+                    {project[currentIndex].title}
                   </h2>
 
                   {/* project category  */}
 
                   <h2 className="text-[23px] mt-[-15px] font-light leading-none text-white group-hover:text-accent transition-all duration-500 capitalize">
-                    {project.category}
+                    {project[currentIndex].category}
                   </h2>
 
                   {/* project description  */}
 
-                  <p className="text-white/60">{project.description}</p>
+                  <p className="text-white/60">
+                    {project[currentIndex].description}
+                  </p>
 
                   {/* stack  */}
 
                   <ul className="flex gap-4 flex-wrap">
-                    {project.stack.map((item, index) => {
+                    {project[currentIndex].stack.map((item, index) => {
                       return (
                         <li key={index} className="text-xl text-accent">
                           {item.name}
-                          {index !== project.stack.length - 1 && ","}
+                          {index !== project[currentIndex].stack.length - 1 &&
+                            ","}
                         </li>
                       );
                     })}
@@ -406,7 +567,7 @@ const Work = () => {
                   <div className="flex items-center gap-4 pb-12 xl:hidden">
                     {/* live project button  */}
 
-                    <Link href={project.live}>
+                    <Link href={project[currentIndex].live}>
                       <TooltipProvider delayDuration={100}>
                         <Tooltip>
                           <TooltipTrigger className="w-[70px] h-[70px] rounded-full bg-white/5 flex justify-center items-center group">
@@ -421,7 +582,7 @@ const Work = () => {
 
                     {/* github project button  */}
 
-                    <Link href={project.github}>
+                    <Link href={project[currentIndex].github}>
                       <TooltipProvider delayDuration={100}>
                         <Tooltip>
                           <TooltipTrigger className="w-[70px] h-[70px] rounded-full bg-white/5 flex justify-center items-center group">
