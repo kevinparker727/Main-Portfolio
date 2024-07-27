@@ -230,17 +230,45 @@ const hobbies = [
   },
 ];
 
-const ImageContainer = ({ project }) => (
-  <SwiperSlide className="w-full">
-    <div className="sm:h-[400px] h-[460px] relative group flex justify-center items-center bg-pink-50/20">
-      {/* overlay  */}
-      <div className="absolute top-0 bottom-0 w-full h-full bg-black/10 z-10"></div>
-      {/* image  */}
-      <div className="relative w-full h-full">
-        <Image src={project.image} fill className="object-contain" alt="" />
-      </div>
-    </div>
-  </SwiperSlide>
+const ImageContainer = ({ project, handleSlideChange }) => (
+  <div className="w-full">
+    <Swiper
+      spaceBetween={30}
+      slidesPerView={1}
+      className="xl:h-[480px] mb-12"
+      onSlideChange={handleSlideChange}
+    >
+      {project.map((project, index) => {
+        return (
+          <SwiperSlide key={index} className="w-full">
+            <div className=" sm:h-[400px] h-[460px] relative group flex justify-center items-center bg-pink-50/20">
+              {/* overlay  */}
+
+              <div className="absolute top-0 bottom-0 w-full h-full bg-black/10 z-10"></div>
+
+              {/* image  */}
+
+              <div className="relative w-full h-full">
+                <Image
+                  src={project.image}
+                  fill
+                  className="object-contain"
+                  alt=""
+                />
+              </div>
+            </div>
+          </SwiperSlide>
+        );
+      })}
+
+      {/* slider buttons  */}
+
+      <WorkSliderBtns
+        containerStyles="flex gap-5 absolute right-0 px-3 xl:px-0 bottom-[calc(50%_-_22px)] xl:bottom-0 z-20 justify-between w-full xl:w-max xl:justify-none"
+        btnStyles="bg-accent hover:bg-accent-hover text-primary text-[22px] w-[44px] h-[44px] flex justify-center items-center transition-all rounded-full"
+      />
+    </Swiper>
+  </div>
 );
 
 const Work = () => {
@@ -314,164 +342,28 @@ const Work = () => {
 
             <div className="container mx-auto xl:w-[48%]">
               <TabsContent value="applications" className="xl:w-full">
-                <div className="w-full">
-                  <Swiper
-                    spaceBetween={30}
-                    slidesPerView={1}
-                    className="xl:h-[480px] mb-12"
-                    onSlideChange={handleSlideChange}
-                  >
-                    {apps.map((project, index) => {
-                      return (
-                        <SwiperSlide key={index} className="w-full">
-                          <div className=" sm:h-[400px] h-[460px] relative group flex justify-center items-center bg-pink-50/20">
-                            {/* overlay  */}
-
-                            <div className="absolute top-0 bottom-0 w-full h-full bg-black/10 z-10"></div>
-
-                            {/* image  */}
-
-                            <div className="relative w-full h-full">
-                              <Image
-                                src={project.image}
-                                fill
-                                className="object-contain"
-                                alt=""
-                              />
-                            </div>
-                          </div>
-                        </SwiperSlide>
-                      );
-                    })}
-
-                    {/* slider buttons  */}
-
-                    <WorkSliderBtns
-                      containerStyles="flex gap-5 absolute right-0 px-3 xl:px-0 bottom-[calc(50%_-_22px)] xl:bottom-0 z-20 justify-between w-full xl:w-max xl:justify-none"
-                      btnStyles="bg-accent hover:bg-accent-hover text-primary text-[22px] w-[44px] h-[44px] flex justify-center items-center transition-all rounded-full"
-                    />
-                  </Swiper>
-                </div>
+                <ImageContainer
+                  project={project}
+                  handleSlideChange={handleSlideChange}
+                />
               </TabsContent>
               <TabsContent value="landing">
-                <div className="w-full">
-                  <Swiper
-                    spaceBetween={30}
-                    slidesPerView={1}
-                    className="xl:h-[480px] mb-12"
-                    onSlideChange={handleSlideChange}
-                  >
-                    {landingPages.map((project, index) => {
-                      return (
-                        <SwiperSlide key={index} className="w-full">
-                          <div className=" sm:h-[400px] h-[460px] relative group flex justify-center items-center bg-pink-50/20">
-                            {/* overlay  */}
-
-                            <div className="absolute top-0 bottom-0 w-full h-full bg-black/10 z-10"></div>
-
-                            {/* image  */}
-
-                            <div className="relative w-full h-full">
-                              <Image
-                                src={project.image}
-                                fill
-                                className="object-contain"
-                                alt=""
-                              />
-                            </div>
-                          </div>
-                        </SwiperSlide>
-                      );
-                    })}
-
-                    {/* slider buttons  */}
-
-                    <WorkSliderBtns
-                      containerStyles="flex gap-5 absolute right-0 px-3 xl:px-0 bottom-[calc(50%_-_22px)] xl:bottom-0 z-20 justify-between w-full xl:w-max xl:justify-none"
-                      btnStyles="bg-accent hover:bg-accent-hover text-primary text-[22px] w-[44px] h-[44px] flex justify-center items-center transition-all rounded-full"
-                    />
-                  </Swiper>
-                </div>
+                <ImageContainer
+                  project={project}
+                  handleSlideChange={handleSlideChange}
+                />
               </TabsContent>
               <TabsContent value="emails">
-                <div className="w-full">
-                  <Swiper
-                    spaceBetween={30}
-                    slidesPerView={1}
-                    className="xl:h-[480px] mb-12"
-                    onSlideChange={handleSlideChange}
-                  >
-                    {HTMLEmails.map((project, index) => {
-                      return (
-                        <SwiperSlide key={index} className="w-full">
-                          <div className=" sm:h-[400px] h-[460px] relative group flex justify-center items-center bg-pink-50/20">
-                            {/* overlay  */}
-
-                            <div className="absolute top-0 bottom-0 w-full h-full bg-black/10 z-10"></div>
-
-                            {/* image  */}
-
-                            <div className="relative w-full h-full">
-                              <Image
-                                src={project.image}
-                                fill
-                                className="object-contain"
-                                alt=""
-                              />
-                            </div>
-                          </div>
-                        </SwiperSlide>
-                      );
-                    })}
-
-                    {/* slider buttons  */}
-
-                    <WorkSliderBtns
-                      containerStyles="flex gap-5 absolute right-0 px-3 xl:px-0 bottom-[calc(50%_-_22px)] xl:bottom-0 z-20 justify-between w-full xl:w-max xl:justify-none"
-                      btnStyles="bg-accent hover:bg-accent-hover text-primary text-[22px] w-[44px] h-[44px] flex justify-center items-center transition-all rounded-full"
-                    />
-                  </Swiper>
-                </div>
+                <ImageContainer
+                  project={project}
+                  handleSlideChange={handleSlideChange}
+                />
               </TabsContent>
               <TabsContent value="hobbies">
-                <div className="w-full">
-                  <Swiper
-                    spaceBetween={30}
-                    slidesPerView={1}
-                    className="xl:h-[480px] mb-12"
-                    onSlideChange={handleSlideChange}
-                  >
-                    {hobbies.map((project, index) => {
-                      return (
-                        <SwiperSlide key={index} className="w-full">
-                          <div className=" sm:h-[400px] h-[460px] relative group flex justify-center items-center bg-pink-50/20">
-                            {/* overlay  */}
-
-                            <div className="absolute top-0 bottom-0 w-full h-full bg-black/10 z-10"></div>
-
-                            {/* image  */}
-
-                            <div className="relative w-full h-full">
-                              <Image
-                                src={project.image}
-                                fill
-                                className="object-contain"
-                                alt=""
-                              />
-                            </div>
-                          </div>
-                        </SwiperSlide>
-                      );
-                    })}
-
-                    {/* slider buttons  */}
-
-                    <WorkSliderBtns
-                      containerStyles="flex gap-5 absolute right-0 px-3 xl:px-0 bottom-[calc(50%_-_22px)] xl:bottom-0 z-20 justify-between w-full xl:w-max xl:justify-none"
-                      btnStyles="bg-accent hover:bg-accent-hover text-primary text-[22px] w-[44px] h-[44px] flex justify-center items-center transition-all rounded-full"
-                    />
-                  </Swiper>
-                </div>
+                <ImageContainer
+                  project={project}
+                  handleSlideChange={handleSlideChange}
+                />
               </TabsContent>
             </div>
 
