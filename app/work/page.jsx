@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 
 import { motion } from "framer-motion";
 import Link from "next/link";
@@ -23,7 +23,7 @@ const apps = [
     category: "application",
     title: "Data Dashboard",
     description:
-      "Dashboard app which allows companies to input large amounts of data for the app to organize and display in well-organized and aesthetically appealing graphs and charts. Login authentication completed with NextAuth.",
+      "I'm proud of this one. Dashboard app which allows companies to input large amounts of data for the app to organize and display in well-organized and aesthetically appealing graphs and charts. Login authentication completed with NextAuth.",
     stack: [
       { name: "ReactJS" },
       { name: "TypeScript" },
@@ -42,7 +42,7 @@ const apps = [
     category: "application",
     title: "Kanban Board",
     description:
-      "Drag and Drop application with beautiful and simple UI/UX. Feel free to add or remove columns and add or remove items from each column. You are also capable of labeling each column and moving items from one column to another.",
+      "If the Data Dashboard didn't exist, this would be my favorite project. It's a drag and drop application with a beautiful and simple UI/UX. Feel free to add or remove columns and add or remove items from each column. You are also capable of labeling each column and moving items from one column to another.",
     stack: [
       { name: "ReactJS" },
       { name: "TypeScript" },
@@ -67,6 +67,16 @@ const apps = [
     live: "",
     github: "https://github.com/kevinparker727/DataSoft-app",
   },
+  {
+    num: "04",
+    category: "application",
+    title: "Mapty",
+    description: "A beautiful maps app that can display directions for you.",
+    stack: [{ name: "JavaScript" }, { name: "HTML5" }, { name: "CSS3" }],
+    image: "/assets/photo.png",
+    live: "",
+    github: "https://github.com/kevinparker727/DataSoft-app",
+  },
 ];
 
 const landingPages = [
@@ -75,7 +85,7 @@ const landingPages = [
     category: "landing page",
     title: "Malone",
     description:
-      "Dog adoption site which was remodeled after one of the first projects I ever built.",
+      "My goal with Malone was to give each dog their spotlight and to show each of them the same love that I show my dog. With beautiful portraits and illuminating bios, it's impossible to not want to take home a new furry best friend after each visit.",
     stack: [
       { name: "ReactJS" },
       { name: "TypeScript" },
@@ -92,7 +102,7 @@ const landingPages = [
     category: "landing page",
     title: "Bankist",
     description:
-      "Dog adoption site which was remodeled after one of the first projects I ever built.",
+      "This is one of the earlier pages I made when I had just learned JavaScript. Try creating an account or two, making transfers, requesting loans, and adding deposits!",
     stack: [
       { name: "ReactJS" },
       { name: "TypeScript" },
@@ -109,7 +119,7 @@ const landingPages = [
     category: "landing page",
     title: "Crosby",
     description:
-      "Dog adoption site which was remodeled after one of the first projects I ever built.",
+      "Crosby is an e-commerce page for the plant-lover in each of us and I wanted it to feel moody but also homey and welcoming. Between plant types and helpful journal entries, I hope to give everybody who visits the confidence to bring some new plant buddies into their home.",
     stack: [
       { name: "ReactJS" },
       { name: "TypeScript" },
@@ -117,7 +127,7 @@ const landingPages = [
       { name: "TailwindCSS" },
       { name: "Vite" },
     ],
-    image: "/assets/malone-alt-5.jpg",
+    image: "/assets/crosby.jpeg",
     live: "",
     github: "https://github.com/kevinparker727/Malone-Landing",
   },
@@ -127,79 +137,66 @@ const HTMLEmails = [
   {
     num: "01",
     category: "html email",
-    title: "Malone",
+    title: "Template",
     description:
-      "Dog adoption site which was remodeled after one of the first projects I ever built.",
-    stack: [
-      { name: "ReactJS" },
-      { name: "TypeScript" },
-      { name: "HTML5" },
-      { name: "TailwindCSS" },
-      { name: "Vite" },
-    ],
-    image: "/assets/malone-alt-5.jpg",
+      "This is a basic email template. It's one of the most visually appealing I have created and can be adapted to suit any needs. It is darkmode friendly as well as functional across all modern browsers.",
+    stack: [{ name: "HTML5" }, { name: "Inline CSS" }],
+    image: "/assets/template.jpeg",
     live: "",
     github: "https://github.com/kevinparker727/Malone-Landing",
   },
   {
     num: "02",
     category: "html email",
-    title: "Bankist",
+    title: "WhaleBone Blog Post",
     description:
-      "Dog adoption site which was remodeled after one of the first projects I ever built.",
-    stack: [
-      { name: "ReactJS" },
-      { name: "TypeScript" },
-      { name: "HTML5" },
-      { name: "TailwindCSS" },
-      { name: "Vite" },
-    ],
-    image: "/assets/malone-alt-5.jpg",
+      "WhaleBone is a popular modern magazine with a large social media presence. This email is advertising a recent blog post displayed on their website.",
+    stack: [{ name: "HTML5" }, { name: "Inline CSS" }],
+    image: "/assets/whalebone.jpeg",
     live: "",
     github: "https://github.com/kevinparker727/Malone-Landing",
   },
   {
     num: "03",
     category: "html email",
-    title: "Crosby",
+    title: "KitchenAid E-Commerce",
     description:
-      "Dog adoption site which was remodeled after one of the first projects I ever built.",
-    stack: [
-      { name: "ReactJS" },
-      { name: "TypeScript" },
-      { name: "HTML5" },
-      { name: "TailwindCSS" },
-      { name: "Vite" },
-    ],
-    image: "/assets/malone-alt-5.jpg",
+      "No kitchen is complete wihtout a KitchenAid stand mixer. Not only is this email advertising some very beautful colors for their mixers, but it's also a place to show buyers some purhcasing guides.",
+    stack: [{ name: "HTML5" }, { name: "Inline CSS" }],
+    image: "/assets/kitchenAid.jpeg",
+    live: "",
+    github: "https://github.com/kevinparker727/Malone-Landing",
+  },
+  {
+    num: "04",
+    category: "html email",
+    title: "Eddyline Receipt",
+    description:
+      "This one is a receipt for a popular restaurant in Buena Vista, CO. The idea is that the items in the receipt are totally dynamic to whatever the person has ordered. The nachos were delicious.",
+    stack: [{ name: "HTML5" }, { name: "Inline CSS" }],
+    image: "/assets/eddyline.jpeg",
     live: "",
     github: "https://github.com/kevinparker727/Malone-Landing",
   },
 ];
+
 const hobbies = [
   {
     num: "01",
-    category: "html email",
-    title: "Malone",
+    category: "hobbies",
+    title: "Whitewater Kayaking",
     description:
-      "Dog adoption site which was remodeled after one of the first projects I ever built.",
-    stack: [
-      { name: "ReactJS" },
-      { name: "TypeScript" },
-      { name: "HTML5" },
-      { name: "TailwindCSS" },
-      { name: "Vite" },
-    ],
-    image: "/assets/malone-alt-5.jpg",
+      "Whitewater has been a big part of my life for nearly a decade. I have been a professional river guide all over the country including Alaska, Colorado, the Grand Canyon, and North Carolina. Whitewater kayaking is easily my favorite hobby.",
     live: "",
-    github: "https://github.com/kevinparker727/Malone-Landing",
+    github: "",
+    image: "/assets/whitewater.jpeg",
   },
   {
     num: "02",
-    category: "html email",
-    title: "Bankist",
+    category: "hobbies",
+    title: "Mountain Biking",
     description:
-      "Dog adoption site which was remodeled after one of the first projects I ever built.",
+      "I bought my first mountain bike at the end of 2021 when I was living in Flagstaff, AZ. I learned how to ride in Flagstaff and Sedona, two of the best places in the country to rid. From my first ride, I knew this would be a hobby for life.",
     stack: [
       { name: "ReactJS" },
       { name: "TypeScript" },
@@ -207,16 +204,16 @@ const hobbies = [
       { name: "TailwindCSS" },
       { name: "Vite" },
     ],
-    image: "/assets/malone-alt-5.jpg",
     live: "",
-    github: "https://github.com/kevinparker727/Malone-Landing",
+    github: "",
+    image: "/assets/malone-alt-5.jpg",
   },
   {
     num: "03",
-    category: "html email",
-    title: "Crosby",
+    category: "hobbies",
+    title: "Baking",
     description:
-      "Dog adoption site which was remodeled after one of the first projects I ever built.",
+      "Before I became a programmer, I had a job at a bakery. I was one of only three full-time employees and I was given close to free reign over what I baked. The owner taught me more than I could have imagined. The grasshopper cakes in the first picture are the most impressive thing I ever baked there, but the chocolate chip cookies were the best I have ever had.",
     stack: [
       { name: "ReactJS" },
       { name: "TypeScript" },
@@ -224,33 +221,40 @@ const hobbies = [
       { name: "TailwindCSS" },
       { name: "Vite" },
     ],
-    image: "/assets/malone-alt-5.jpg",
     live: "",
-    github: "https://github.com/kevinparker727/Malone-Landing",
+    github: "",
+    image: "/assets/baking.jpeg",
   },
 ];
 
 const Work = () => {
-  const [appProject, setAppProject] = useState(apps[0]);
-  const [landingProject, setLandingProject] = useState(landingPages[0]);
-  const [emailProject, setEmailProject] = useState(HTMLEmails[0]);
-  const [hobbiesProject, setHobbiesProject] = useState(hobbies[0]);
+  const [project, setProject] = useState(apps);
+  const [currentIndex, setCurrentIndex] = useState(0);
+  const [category, setCategory] = useState("apps");
 
-  const handleAppsSlideChange = (swiper) => {
+  useEffect(() => {
+    switch (category) {
+      case "apps":
+        setProject(apps);
+        break;
+      case "landing":
+        setProject(landingPages);
+        break;
+      case "emails":
+        setProject(HTMLEmails);
+        break;
+      case "hobbies":
+        setProject(hobbies);
+        break;
+      default:
+        setProject(apps);
+    }
+    setCurrentIndex(0);
+  }, [category]);
+
+  const handleSlideChange = (swiper) => {
     const currentIndex = swiper.activeIndex;
-    setAppProject(apps[currentIndex]);
-  };
-  const handleLandingSlideChange = (swiper) => {
-    const currentIndex = swiper.activeIndex;
-    setLandingProject(landingPages[currentIndex]);
-  };
-  const handleEmailSlideChange = (swiper) => {
-    const currentIndex = swiper.activeIndex;
-    setEmailProject(HTMLEmails[currentIndex]);
-  };
-  const handleHobbiesSlideChange = (swiper) => {
-    const currentIndex = swiper.activeIndex;
-    setHobbiesProject(hobbies[currentIndex]);
+    setCurrentIndex(currentIndex);
   };
 
   return (
@@ -268,75 +272,208 @@ const Work = () => {
           className="flex flex-col xl:justify-center w-full gap-[20px]"
         >
           <TabsList className="flex justify-center max-w-[470px] sm:max-w-[600px] lg:max-w-[800px] md:pb-4 xl:pb-10 mx-auto xl:mx-0 gap-6">
-            <TabsTrigger value="applications">Apps</TabsTrigger>
-            <TabsTrigger value="landing">Landing</TabsTrigger>
-            <TabsTrigger value="emails">Emails</TabsTrigger>
-            <TabsTrigger value="hobbies">Hobbies</TabsTrigger>
+            <TabsTrigger
+              onClick={() => setCategory("apps")}
+              value="applications"
+            >
+              Apps
+            </TabsTrigger>
+            <TabsTrigger onClick={() => setCategory("landing")} value="landing">
+              Landing
+            </TabsTrigger>
+            <TabsTrigger onClick={() => setCategory("emails")} value="emails">
+              Emails
+            </TabsTrigger>
+            <TabsTrigger onClick={() => setCategory("hobbies")} value="hobbies">
+              Hobbies
+            </TabsTrigger>
           </TabsList>
 
           {/* project display  */}
 
-          <div className="container mx-auto xl:flex xl:flex-row xl:justify-between w-full">
-            {/* project image  */}
+          <div className="container mx-auto w-full">
+            <div className="container mx-auto w-full xl:flex xl:flex-row">
+              {/* project image  */}
 
-            <div className="container mx-auto xl:w-[48%]">
-              <TabsContent value="applications" className="xl:w-full">
-                <div className="w-full">
-                  <Swiper
-                    spaceBetween={30}
-                    slidesPerView={1}
-                    className="xl:h-[480px] mb-12"
-                    onSlideChange={handleAppsSlideChange}
-                  >
-                    {apps.map((project, index) => {
-                      return (
-                        <SwiperSlide key={index} className="w-full">
-                          <div className=" sm:h-[400px] h-[460px] relative group flex justify-center items-center bg-pink-50/20">
-                            {/* overlay  */}
+              <div className="container mx-auto xl:w-[48%]">
+                <TabsContent value="applications" className="xl:w-full">
+                  <div className="w-full">
+                    <Swiper
+                      spaceBetween={30}
+                      slidesPerView={1}
+                      className="xl:h-[480px] mb-12"
+                      onSlideChange={handleSlideChange}
+                    >
+                      {apps.map((project, index) => {
+                        return (
+                          <SwiperSlide key={index} className="w-full">
+                            <div className=" sm:h-[400px] h-[460px] relative group flex justify-center items-center bg-pink-50/20">
+                              {/* overlay  */}
 
-                            <div className="absolute top-0 bottom-0 w-full h-full bg-black/10 z-10"></div>
+                              <div className="absolute top-0 bottom-0 w-full h-full bg-black/10 z-10"></div>
 
-                            {/* image  */}
+                              {/* image  */}
 
-                            <div className="relative w-full h-full">
-                              <Image
-                                src={appProject.image}
-                                fill
-                                className="object-contain"
-                                alt=""
-                              />
+                              <div className="relative w-full h-full">
+                                <Image
+                                  src={project.image}
+                                  fill
+                                  className="object-contain"
+                                  alt=""
+                                />
+                              </div>
                             </div>
-                          </div>
-                        </SwiperSlide>
-                      );
-                    })}
+                          </SwiperSlide>
+                        );
+                      })}
 
-                    {/* slider buttons  */}
+                      {/* slider buttons  */}
 
-                    <WorkSliderBtns
-                      containerStyles="flex gap-5 absolute right-0 px-3 xl:px-0 bottom-[calc(50%_-_22px)] xl:bottom-0 z-20 justify-between w-full xl:w-max xl:justify-none"
-                      btnStyles="bg-accent hover:bg-accent-hover text-primary text-[22px] w-[44px] h-[44px] flex justify-center items-center transition-all rounded-full"
-                    />
-                  </Swiper>
-                </div>
+                      <WorkSliderBtns
+                        containerStyles="flex gap-5 absolute right-0 px-3 xl:px-0 bottom-[calc(50%_-_22px)] xl:bottom-0 z-20 justify-between w-full xl:w-max xl:justify-none"
+                        btnStyles="bg-accent hover:bg-accent-hover text-primary text-[22px] w-[44px] h-[44px] flex justify-center items-center transition-all rounded-full"
+                      />
+                    </Swiper>
+                  </div>
+                </TabsContent>
+                <TabsContent value="landing">
+                  <div className="w-full">
+                    <Swiper
+                      spaceBetween={30}
+                      slidesPerView={1}
+                      className="xl:h-[480px] mb-12"
+                      onSlideChange={handleSlideChange}
+                    >
+                      {landingPages.map((project, index) => {
+                        return (
+                          <SwiperSlide key={index} className="w-full">
+                            <div className=" sm:h-[400px] h-[460px] relative group flex justify-center items-center bg-pink-50/20">
+                              {/* overlay  */}
 
-                {/* project verbeage  */}
+                              <div className="absolute top-0 bottom-0 w-full h-full bg-black/10 z-10"></div>
 
-                <div className=" xl:gap-[30px] xl:w-[48%]">
-                  <div className="w-full xl:h-[460px] flex flex-col xl:justify-between order-2 xl:order-none">
-                    <div className="flex flex-col gap-[30px] h-[50%]">
-                      {/* outline number */}
+                              {/* image  */}
 
-                      <div className="text-8xl leading-none font-extrabold text-transparent text-outline flex justify-between">
-                        {appProject.num}
+                              <div className="relative w-full h-full">
+                                <Image
+                                  src={project.image}
+                                  fill
+                                  className="object-contain"
+                                  alt=""
+                                />
+                              </div>
+                            </div>
+                          </SwiperSlide>
+                        );
+                      })}
 
-                        {/* buttons  */}
+                      {/* slider buttons  */}
 
+                      <WorkSliderBtns
+                        containerStyles="flex gap-5 absolute right-0 px-3 xl:px-0 bottom-[calc(50%_-_22px)] xl:bottom-0 z-20 justify-between w-full xl:w-max xl:justify-none"
+                        btnStyles="bg-accent hover:bg-accent-hover text-primary text-[22px] w-[44px] h-[44px] flex justify-center items-center transition-all rounded-full"
+                      />
+                    </Swiper>
+                  </div>
+                </TabsContent>
+                <TabsContent value="emails">
+                  <div className="w-full">
+                    <Swiper
+                      spaceBetween={30}
+                      slidesPerView={1}
+                      className="xl:h-[480px] mb-12"
+                      onSlideChange={handleSlideChange}
+                    >
+                      {HTMLEmails.map((project, index) => {
+                        return (
+                          <SwiperSlide key={index} className="w-full">
+                            <div className=" sm:h-[400px] h-[460px] relative group flex justify-center items-center bg-pink-50/20">
+                              {/* overlay  */}
+
+                              <div className="absolute top-0 bottom-0 w-full h-full bg-black/10 z-10"></div>
+
+                              {/* image  */}
+
+                              <div className="relative w-full h-full">
+                                <Image
+                                  src={project.image}
+                                  fill
+                                  className="object-contain"
+                                  alt=""
+                                />
+                              </div>
+                            </div>
+                          </SwiperSlide>
+                        );
+                      })}
+
+                      {/* slider buttons  */}
+
+                      <WorkSliderBtns
+                        containerStyles="flex gap-5 absolute right-0 px-3 xl:px-0 bottom-[calc(50%_-_22px)] xl:bottom-0 z-20 justify-between w-full xl:w-max xl:justify-none"
+                        btnStyles="bg-accent hover:bg-accent-hover text-primary text-[22px] w-[44px] h-[44px] flex justify-center items-center transition-all rounded-full"
+                      />
+                    </Swiper>
+                  </div>
+                </TabsContent>
+                <TabsContent value="hobbies">
+                  <div className="w-full">
+                    <Swiper
+                      spaceBetween={30}
+                      slidesPerView={1}
+                      className="xl:h-[480px] mb-12"
+                      onSlideChange={handleSlideChange}
+                    >
+                      {hobbies.map((project, index) => {
+                        return (
+                          <SwiperSlide key={index} className="w-full">
+                            <div className=" sm:h-[400px] h-[460px] relative group flex justify-center items-center bg-pink-50/20">
+                              {/* overlay  */}
+
+                              <div className="absolute top-0 bottom-0 w-full h-full bg-black/10 z-10"></div>
+
+                              {/* image  */}
+
+                              <div className="relative w-full h-full">
+                                <Image
+                                  src={project.image}
+                                  fill
+                                  className="object-contain"
+                                  alt=""
+                                />
+                              </div>
+                            </div>
+                          </SwiperSlide>
+                        );
+                      })}
+
+                      {/* slider buttons  */}
+
+                      <WorkSliderBtns
+                        containerStyles="flex gap-5 absolute right-0 px-3 xl:px-0 bottom-[calc(50%_-_22px)] xl:bottom-0 z-20 justify-between w-full xl:w-max xl:justify-none"
+                        btnStyles="bg-accent hover:bg-accent-hover text-primary text-[22px] w-[44px] h-[44px] flex justify-center items-center transition-all rounded-full"
+                      />
+                    </Swiper>
+                  </div>
+                </TabsContent>
+              </div>
+              {/* project verbeage  */}
+
+              <div className=" xl:gap-[30px] xl:w-[48%]">
+                <div className="w-full xl:h-[460px] flex flex-col xl:justify-between order-2 xl:order-none">
+                  <div className="flex flex-col gap-[30px] h-[50%]">
+                    {/* outline number */}
+
+                    <div className="text-8xl leading-none font-extrabold text-transparent text-outline flex justify-between">
+                      {project[currentIndex].num}/0{project.length}
+                      {/* buttons  */}
+                      {category !== "hobbies" && (
                         <div className="flex items-center gap-4 pb-12 max-xl:hidden">
                           {/* live project button  */}
 
                           <Link
-                            href={appProject.live}
+                            href={project[currentIndex].live}
+                            target="_blank"
                             className="ring-1 ring-accent rounded-full"
                           >
                             <TooltipProvider delayDuration={100}>
@@ -354,7 +491,8 @@ const Work = () => {
                           {/* github project button  */}
 
                           <Link
-                            href={appProject.github}
+                            href={project[currentIndex].github}
+                            target="_blank"
                             className="ring-1 ring-accent rounded-full"
                           >
                             <TooltipProvider delayDuration={100}>
@@ -369,47 +507,52 @@ const Work = () => {
                             </TooltipProvider>
                           </Link>
                         </div>
-                      </div>
+                      )}
+                    </div>
 
-                      {/* project title  */}
+                    {/* project title  */}
 
-                      <h2 className="text-[42px] font-bold leading-none text-white group-hover:text-accent transition-all duration-500 capitalize">
-                        {appProject.title}
-                      </h2>
+                    <h2 className="text-[42px] font-bold leading-none text-white group-hover:text-accent transition-all duration-500 capitalize">
+                      {project[currentIndex].title}
+                    </h2>
 
-                      {/* project category  */}
+                    {/* project category  */}
 
-                      <h2 className="text-[23px] mt-[-15px] font-light leading-none text-white group-hover:text-accent transition-all duration-500 capitalize">
-                        {appProject.category}
-                      </h2>
+                    <h2 className="text-[23px] mt-[-15px] font-light leading-none text-white group-hover:text-accent transition-all duration-500 capitalize">
+                      {project[currentIndex].category}
+                    </h2>
 
-                      {/* project description  */}
+                    {/* project description  */}
 
-                      <p className="text-white/60">{appProject.description}</p>
+                    <p className="text-white/60">
+                      {project[currentIndex].description}
+                    </p>
 
-                      {/* stack  */}
+                    {/* stack  */}
 
-                      <ul className="flex gap-4 flex-wrap">
-                        {appProject.stack.map((item, index) => {
-                          return (
-                            <li key={index} className="text-xl text-accent">
-                              {item.name}
-                              {index !== appProject.stack.length - 1 && ","}
-                            </li>
-                          );
-                        })}
-                      </ul>
+                    <ul className="flex gap-4 flex-wrap">
+                      {project[currentIndex].stack?.map((item, index) => {
+                        return (
+                          <li key={index} className="text-xl text-accent">
+                            {item.name}
+                            {index !==
+                              project[currentIndex].stack?.length - 1 && ","}
+                          </li>
+                        );
+                      })}
+                    </ul>
 
-                      {/* border  */}
+                    {/* border  */}
 
-                      <div className="border border-white/20"></div>
+                    <div className="border border-white/20"></div>
 
-                      {/* buttons  */}
+                    {/* buttons  */}
 
+                    {category !== "hobbies" && (
                       <div className="flex items-center gap-4 pb-12 xl:hidden">
                         {/* live project button  */}
 
-                        <Link href={appProject.live}>
+                        <Link href={project[currentIndex].live} target="_blank">
                           <TooltipProvider delayDuration={100}>
                             <Tooltip>
                               <TooltipTrigger className="w-[70px] h-[70px] rounded-full bg-white/5 flex justify-center items-center group">
@@ -424,7 +567,10 @@ const Work = () => {
 
                         {/* github project button  */}
 
-                        <Link href={appProject.github}>
+                        <Link
+                          href={project[currentIndex].github}
+                          target="_blank"
+                        >
                           <TooltipProvider delayDuration={100}>
                             <Tooltip>
                               <TooltipTrigger className="w-[70px] h-[70px] rounded-full bg-white/5 flex justify-center items-center group">
@@ -437,499 +583,10 @@ const Work = () => {
                           </TooltipProvider>
                         </Link>
                       </div>
-                    </div>
+                    )}
                   </div>
                 </div>
-              </TabsContent>
-              <TabsContent value="landing">
-                <div className="w-full">
-                  <Swiper
-                    spaceBetween={30}
-                    slidesPerView={1}
-                    className="xl:h-[480px] mb-12"
-                    onSlideChange={handleLandingSlideChange}
-                  >
-                    {landingPages.map((project, index) => {
-                      return (
-                        <SwiperSlide key={index} className="w-full">
-                          <div className=" sm:h-[400px] h-[460px] relative group flex justify-center items-center bg-pink-50/20">
-                            {/* overlay  */}
-
-                            <div className="absolute top-0 bottom-0 w-full h-full bg-black/10 z-10"></div>
-
-                            {/* image  */}
-
-                            <div className="relative w-full h-full">
-                              <Image
-                                src={project.image}
-                                fill
-                                className="object-contain"
-                                alt=""
-                              />
-                            </div>
-                          </div>
-                        </SwiperSlide>
-                      );
-                    })}
-
-                    {/* slider buttons  */}
-
-                    <WorkSliderBtns
-                      containerStyles="flex gap-5 absolute right-0 px-3 xl:px-0 bottom-[calc(50%_-_22px)] xl:bottom-0 z-20 justify-between w-full xl:w-max xl:justify-none"
-                      btnStyles="bg-accent hover:bg-accent-hover text-primary text-[22px] w-[44px] h-[44px] flex justify-center items-center transition-all rounded-full"
-                    />
-                  </Swiper>
-                </div>
-
-                {/* project verbeage  */}
-
-                <div className=" xl:gap-[30px] xl:w-[48%]">
-                  <div className="w-full xl:h-[460px] flex flex-col xl:justify-between order-2 xl:order-none">
-                    <div className="flex flex-col gap-[30px] h-[50%]">
-                      {/* outline number */}
-
-                      <div className="text-8xl leading-none font-extrabold text-transparent text-outline flex justify-between">
-                        {landingProject.num}
-
-                        {/* buttons  */}
-
-                        <div className="flex items-center gap-4 pb-12 max-xl:hidden">
-                          {/* live project button  */}
-
-                          <Link
-                            href={landingProject.live}
-                            className="ring-1 ring-accent rounded-full"
-                          >
-                            <TooltipProvider delayDuration={100}>
-                              <Tooltip>
-                                <TooltipTrigger className="w-[70px] h-[70px] rounded-full bg-white/5 flex justify-center items-center group">
-                                  <BsArrowUpRight className="text-white text-3xl group-hover:text-accent" />
-                                </TooltipTrigger>
-                                <TooltipContent>
-                                  <p>Live Project</p>
-                                </TooltipContent>
-                              </Tooltip>
-                            </TooltipProvider>
-                          </Link>
-
-                          {/* github project button  */}
-
-                          <Link
-                            href={landingProject.github}
-                            className="ring-1 ring-accent rounded-full"
-                          >
-                            <TooltipProvider delayDuration={100}>
-                              <Tooltip>
-                                <TooltipTrigger className="w-[70px] h-[70px] rounded-full bg-white/5 flex justify-center items-center group">
-                                  <BsGithub className="text-white text-3xl group-hover:text-accent" />
-                                </TooltipTrigger>
-                                <TooltipContent>
-                                  <p>GitHub Repository</p>
-                                </TooltipContent>
-                              </Tooltip>
-                            </TooltipProvider>
-                          </Link>
-                        </div>
-                      </div>
-
-                      {/* project title  */}
-
-                      <h2 className="text-[42px] font-bold leading-none text-white group-hover:text-accent transition-all duration-500 capitalize">
-                        {landingProject.title}
-                      </h2>
-
-                      {/* project category  */}
-
-                      <h2 className="text-[23px] mt-[-15px] font-light leading-none text-white group-hover:text-accent transition-all duration-500 capitalize">
-                        {landingProject.category}
-                      </h2>
-
-                      {/* project description  */}
-
-                      <p className="text-white/60">
-                        {landingProject.description}
-                      </p>
-
-                      {/* stack  */}
-
-                      <ul className="flex gap-4 flex-wrap">
-                        {landingProject.stack.map((item, index) => {
-                          return (
-                            <li key={index} className="text-xl text-accent">
-                              {item.name}
-                              {index !== landingProject.stack.length - 1 && ","}
-                            </li>
-                          );
-                        })}
-                      </ul>
-
-                      {/* border  */}
-
-                      <div className="border border-white/20"></div>
-
-                      {/* buttons  */}
-
-                      <div className="flex items-center gap-4 pb-12 xl:hidden">
-                        {/* live project button  */}
-
-                        <Link href={landingProject.live}>
-                          <TooltipProvider delayDuration={100}>
-                            <Tooltip>
-                              <TooltipTrigger className="w-[70px] h-[70px] rounded-full bg-white/5 flex justify-center items-center group">
-                                <BsArrowUpRight className="text-white text-3xl group-hover:text-accent" />
-                              </TooltipTrigger>
-                              <TooltipContent>
-                                <p>Live Project</p>
-                              </TooltipContent>
-                            </Tooltip>
-                          </TooltipProvider>
-                        </Link>
-
-                        {/* github project button  */}
-
-                        <Link href={landingProject.github}>
-                          <TooltipProvider delayDuration={100}>
-                            <Tooltip>
-                              <TooltipTrigger className="w-[70px] h-[70px] rounded-full bg-white/5 flex justify-center items-center group">
-                                <BsGithub className="text-white text-3xl group-hover:text-accent" />
-                              </TooltipTrigger>
-                              <TooltipContent>
-                                <p>GitHub Repository</p>
-                              </TooltipContent>
-                            </Tooltip>
-                          </TooltipProvider>
-                        </Link>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </TabsContent>
-              <TabsContent value="emails">
-                <div className="w-full">
-                  <Swiper
-                    spaceBetween={30}
-                    slidesPerView={1}
-                    className="xl:h-[480px] mb-12"
-                    onSlideChange={handleEmailSlideChange}
-                  >
-                    {HTMLEmails.map((project, index) => {
-                      return (
-                        <SwiperSlide key={index} className="w-full">
-                          <div className=" sm:h-[400px] h-[460px] relative group flex justify-center items-center bg-pink-50/20">
-                            {/* overlay  */}
-
-                            <div className="absolute top-0 bottom-0 w-full h-full bg-black/10 z-10"></div>
-
-                            {/* image  */}
-
-                            <div className="relative w-full h-full">
-                              <Image
-                                src={project.image}
-                                fill
-                                className="object-contain"
-                                alt=""
-                              />
-                            </div>
-                          </div>
-                        </SwiperSlide>
-                      );
-                    })}
-
-                    {/* slider buttons  */}
-
-                    <WorkSliderBtns
-                      containerStyles="flex gap-5 absolute right-0 px-3 xl:px-0 bottom-[calc(50%_-_22px)] xl:bottom-0 z-20 justify-between w-full xl:w-max xl:justify-none"
-                      btnStyles="bg-accent hover:bg-accent-hover text-primary text-[22px] w-[44px] h-[44px] flex justify-center items-center transition-all rounded-full"
-                    />
-                  </Swiper>
-                </div>
-
-                {/* project verbeage  */}
-
-                <div className=" xl:gap-[30px] xl:w-[48%]">
-                  <div className="w-full xl:h-[460px] flex flex-col xl:justify-between order-2 xl:order-none">
-                    <div className="flex flex-col gap-[30px] h-[50%]">
-                      {/* outline number */}
-
-                      <div className="text-8xl leading-none font-extrabold text-transparent text-outline flex justify-between">
-                        {emailProject.num}
-
-                        {/* buttons  */}
-
-                        <div className="flex items-center gap-4 pb-12 max-xl:hidden">
-                          {/* live project button  */}
-
-                          <Link
-                            href={emailProject.live}
-                            className="ring-1 ring-accent rounded-full"
-                          >
-                            <TooltipProvider delayDuration={100}>
-                              <Tooltip>
-                                <TooltipTrigger className="w-[70px] h-[70px] rounded-full bg-white/5 flex justify-center items-center group">
-                                  <BsArrowUpRight className="text-white text-3xl group-hover:text-accent" />
-                                </TooltipTrigger>
-                                <TooltipContent>
-                                  <p>Live Project</p>
-                                </TooltipContent>
-                              </Tooltip>
-                            </TooltipProvider>
-                          </Link>
-
-                          {/* github project button  */}
-
-                          <Link
-                            href={emailProject.github}
-                            className="ring-1 ring-accent rounded-full"
-                          >
-                            <TooltipProvider delayDuration={100}>
-                              <Tooltip>
-                                <TooltipTrigger className="w-[70px] h-[70px] rounded-full bg-white/5 flex justify-center items-center group">
-                                  <BsGithub className="text-white text-3xl group-hover:text-accent" />
-                                </TooltipTrigger>
-                                <TooltipContent>
-                                  <p>GitHub Repository</p>
-                                </TooltipContent>
-                              </Tooltip>
-                            </TooltipProvider>
-                          </Link>
-                        </div>
-                      </div>
-
-                      {/* project title  */}
-
-                      <h2 className="text-[42px] font-bold leading-none text-white group-hover:text-accent transition-all duration-500 capitalize">
-                        {emailProject.title}
-                      </h2>
-
-                      {/* project category  */}
-
-                      <h2 className="text-[23px] mt-[-15px] font-light leading-none text-white group-hover:text-accent transition-all duration-500 capitalize">
-                        {emailProject.category}
-                      </h2>
-
-                      {/* project description  */}
-
-                      <p className="text-white/60">
-                        {emailProject.description}
-                      </p>
-
-                      {/* stack  */}
-
-                      <ul className="flex gap-4 flex-wrap">
-                        {emailProject.stack.map((item, index) => {
-                          return (
-                            <li key={index} className="text-xl text-accent">
-                              {item.name}
-                              {index !== emailProject.stack.length - 1 && ","}
-                            </li>
-                          );
-                        })}
-                      </ul>
-
-                      {/* border  */}
-
-                      <div className="border border-white/20"></div>
-
-                      {/* buttons  */}
-
-                      <div className="flex items-center gap-4 pb-12 xl:hidden">
-                        {/* live project button  */}
-
-                        <Link href={emailProject.live}>
-                          <TooltipProvider delayDuration={100}>
-                            <Tooltip>
-                              <TooltipTrigger className="w-[70px] h-[70px] rounded-full bg-white/5 flex justify-center items-center group">
-                                <BsArrowUpRight className="text-white text-3xl group-hover:text-accent" />
-                              </TooltipTrigger>
-                              <TooltipContent>
-                                <p>Live Project</p>
-                              </TooltipContent>
-                            </Tooltip>
-                          </TooltipProvider>
-                        </Link>
-
-                        {/* github project button  */}
-
-                        <Link href={emailProject.github}>
-                          <TooltipProvider delayDuration={100}>
-                            <Tooltip>
-                              <TooltipTrigger className="w-[70px] h-[70px] rounded-full bg-white/5 flex justify-center items-center group">
-                                <BsGithub className="text-white text-3xl group-hover:text-accent" />
-                              </TooltipTrigger>
-                              <TooltipContent>
-                                <p>GitHub Repository</p>
-                              </TooltipContent>
-                            </Tooltip>
-                          </TooltipProvider>
-                        </Link>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </TabsContent>
-              <TabsContent value="hobbies">
-                <div className="w-full">
-                  <Swiper
-                    spaceBetween={30}
-                    slidesPerView={1}
-                    className="xl:h-[480px] mb-12"
-                    onSlideChange={handleHobbiesSlideChange}
-                  >
-                    {hobbies.map((project, index) => {
-                      return (
-                        <SwiperSlide key={index} className="w-full">
-                          <div className=" sm:h-[400px] h-[460px] relative group flex justify-center items-center bg-pink-50/20">
-                            {/* overlay  */}
-
-                            <div className="absolute top-0 bottom-0 w-full h-full bg-black/10 z-10"></div>
-
-                            {/* image  */}
-
-                            <div className="relative w-full h-full">
-                              <Image
-                                src={project.image}
-                                fill
-                                className="object-contain"
-                                alt=""
-                              />
-                            </div>
-                          </div>
-                        </SwiperSlide>
-                      );
-                    })}
-
-                    {/* slider buttons  */}
-
-                    <WorkSliderBtns
-                      containerStyles="flex gap-5 absolute right-0 px-3 xl:px-0 bottom-[calc(50%_-_22px)] xl:bottom-0 z-20 justify-between w-full xl:w-max xl:justify-none"
-                      btnStyles="bg-accent hover:bg-accent-hover text-primary text-[22px] w-[44px] h-[44px] flex justify-center items-center transition-all rounded-full"
-                    />
-                  </Swiper>
-                </div>
-
-                {/* project verbeage  */}
-
-                <div className=" xl:gap-[30px] xl:w-[48%]">
-                  <div className="w-full xl:h-[460px] flex flex-col xl:justify-between order-2 xl:order-none">
-                    <div className="flex flex-col gap-[30px] h-[50%]">
-                      {/* outline number */}
-
-                      <div className="text-8xl leading-none font-extrabold text-transparent text-outline flex justify-between">
-                        {hobbiesProject.num}
-
-                        {/* buttons  */}
-
-                        <div className="flex items-center gap-4 pb-12 max-xl:hidden">
-                          {/* live project button  */}
-
-                          <Link
-                            href={hobbiesProject.live}
-                            className="ring-1 ring-accent rounded-full"
-                          >
-                            <TooltipProvider delayDuration={100}>
-                              <Tooltip>
-                                <TooltipTrigger className="w-[70px] h-[70px] rounded-full bg-white/5 flex justify-center items-center group">
-                                  <BsArrowUpRight className="text-white text-3xl group-hover:text-accent" />
-                                </TooltipTrigger>
-                                <TooltipContent>
-                                  <p>Live Project</p>
-                                </TooltipContent>
-                              </Tooltip>
-                            </TooltipProvider>
-                          </Link>
-
-                          {/* github project button  */}
-
-                          <Link
-                            href={hobbiesProject.github}
-                            className="ring-1 ring-accent rounded-full"
-                          >
-                            <TooltipProvider delayDuration={100}>
-                              <Tooltip>
-                                <TooltipTrigger className="w-[70px] h-[70px] rounded-full bg-white/5 flex justify-center items-center group">
-                                  <BsGithub className="text-white text-3xl group-hover:text-accent" />
-                                </TooltipTrigger>
-                                <TooltipContent>
-                                  <p>GitHub Repository</p>
-                                </TooltipContent>
-                              </Tooltip>
-                            </TooltipProvider>
-                          </Link>
-                        </div>
-                      </div>
-
-                      {/* project title  */}
-
-                      <h2 className="text-[42px] font-bold leading-none text-white group-hover:text-accent transition-all duration-500 capitalize">
-                        {hobbiesProject.title}
-                      </h2>
-
-                      {/* project category  */}
-
-                      <h2 className="text-[23px] mt-[-15px] font-light leading-none text-white group-hover:text-accent transition-all duration-500 capitalize">
-                        {hobbiesProject.category}
-                      </h2>
-
-                      {/* project description  */}
-
-                      <p className="text-white/60">
-                        {hobbiesProject.description}
-                      </p>
-
-                      {/* stack  */}
-
-                      <ul className="flex gap-4 flex-wrap">
-                        {hobbiesProject.stack.map((item, index) => {
-                          return (
-                            <li key={index} className="text-xl text-accent">
-                              {item.name}
-                              {index !== hobbiesProject.stack.length - 1 && ","}
-                            </li>
-                          );
-                        })}
-                      </ul>
-
-                      {/* border  */}
-
-                      <div className="border border-white/20"></div>
-
-                      {/* buttons  */}
-
-                      <div className="flex items-center gap-4 pb-12 xl:hidden">
-                        {/* live project button  */}
-
-                        <Link href={hobbiesProject.live}>
-                          <TooltipProvider delayDuration={100}>
-                            <Tooltip>
-                              <TooltipTrigger className="w-[70px] h-[70px] rounded-full bg-white/5 flex justify-center items-center group">
-                                <BsArrowUpRight className="text-white text-3xl group-hover:text-accent" />
-                              </TooltipTrigger>
-                              <TooltipContent>
-                                <p>Live Project</p>
-                              </TooltipContent>
-                            </Tooltip>
-                          </TooltipProvider>
-                        </Link>
-
-                        {/* github project button  */}
-
-                        <Link href={hobbiesProject.github}>
-                          <TooltipProvider delayDuration={100}>
-                            <Tooltip>
-                              <TooltipTrigger className="w-[70px] h-[70px] rounded-full bg-white/5 flex justify-center items-center group">
-                                <BsGithub className="text-white text-3xl group-hover:text-accent" />
-                              </TooltipTrigger>
-                              <TooltipContent>
-                                <p>GitHub Repository</p>
-                              </TooltipContent>
-                            </Tooltip>
-                          </TooltipProvider>
-                        </Link>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </TabsContent>
+              </div>
             </div>
           </div>
         </Tabs>
