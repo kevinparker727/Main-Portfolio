@@ -202,7 +202,7 @@ const hobbies = [
     ],
     live: "",
     github: "",
-    image: "/assets/malone-alt-5.jpg",
+    image: "/assets/biking.jpg",
   },
   {
     num: "03",
