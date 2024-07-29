@@ -27,7 +27,7 @@ const about = {
   icon: "/assets/next.svg",
   title: "About Me",
   description:
-    "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dignissimos doloremque harum reprehenderit corrupti, mollitia qui. Deserunt, sint!",
+    "Nice to meet you!  My name is Kevin Parker. I am a front-end web designer specializing in React, NodeJS, JavaScript, HTML, and CSS. My main focus is landing pages and apps, but I also have plenty of experience in HTMl emails. I have also styled for specialty clients such as Outlook and Internet Explorer while using a mobile-first design concept. I am currently accepting job offers for both remote and on-site work. I am a quick learner and very motivated to absorb as much as I can. I love to code and I am always excited to work on new projects. Whenever I'm not coding, you can find me mountain biking, whitewater kayaking, and baking. Shoot me an email and let's get your project started!",
   info: [
     {
       fieldName: "Name",
@@ -195,12 +195,32 @@ const Resume = () => {
               value="about"
               className="w-full text-center xl:text-left"
             >
-              <div className="flex flex-col gap-[30px]">
-                <h3 className="text-4xl font-bold">{about.title}</h3>
-                <p className="max-w-[600px] text-white/60 mx-auto xl:mx-0">
-                  {about.description}
+              <div className="flex flex-col gap-[30px] bg-pink-50/20 rounded-xl xl:mr-[100px] p-8">
+                <h3 className="text-4xl font-semi-bold border-b-2 pb-4">
+                  {about.title}
+                </h3>
+                <p className="max-w-[600px] text-white/80 mx-auto xl:mx-0">
+                  Nice to meet you!{" "}
+                </p>{" "}
+                <p className="max-w-[600px] text-white/80 mx-auto xl:mx-0">
+                  {" "}
+                  My name is Kevin Parker. I am a front-end web developer
+                  specializing in React. My main focus is landing pages and
+                  apps, but I also have plenty of experience in HTMl emails. I
+                  have also styled for specialty clients such as Outlook and
+                  Internet Explorer while using a mobile-first design concept.{" "}
+                </p>{" "}
+                <p className="max-w-[600px] text-white/80 mx-auto xl:mx-0">
+                  {" "}
+                  I am currently accepting job offers for both remote and
+                  on-site work. I am a quick learner and very motivated to
+                  absorb as much as I can while holding myself to a high level
+                  of accountability. I love to code and I am always excited to
+                  work on new projects. Whenever I'm not coding, you can find me
+                  mountain biking, whitewater kayaking, and baking. Shoot me an
+                  email and let's get your project started!
                 </p>
-                <ul className="grid grid-cols-1 xl:grid-cols-2 gap-y-6  max-w-[620px] mx-auto xl:mx-0">
+                {/* <ul className="grid grid-cols-1 xl:grid-cols-2 gap-y-6  max-w-[620px] mx-auto xl:mx-0">
                   {about.info.map((item, index) => {
                     return (
                       <li
@@ -212,7 +232,7 @@ const Resume = () => {
                       </li>
                     );
                   })}
-                </ul>
+                </ul> */}
               </div>
             </TabsContent>
 
