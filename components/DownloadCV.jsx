@@ -3,14 +3,13 @@ import { Button } from "@/components/ui/button";
 
 const DownloadButton = () => {
   return (
-    <a href="/My-CV.pdf" download="My-CV.pdf">
+    <a href="/assets/My-CV.pdf" download="My-CV.pdf">
       <Button
         variant="outline"
         size="lg"
-        classNameuppercase
-        flex
+        className="flex
         items-center
-        gap-2
+        gap-2"
         target="_blank"
       >
         <span className="mr-3">Download CV</span>
