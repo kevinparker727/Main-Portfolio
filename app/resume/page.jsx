@@ -58,7 +58,7 @@ const experience = {
   icon: "/assets/next.svg",
   title: "My Experience",
   description:
-    "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dignissimos doloremque harum reprehenderit corrupti, mollitia qui. Deserunt, sint!",
+    "Despite not having formal programming employment, I have dedicated significant time to developing several projects, showcasing my coding skills. Alongside programming, I have maintained various part-time jobs, in order to survive until I break into the programming field. My typical weekly schedule involves working four days at part-time jobs and devoting three full days to programming. This self-driven approach has not only enhanced my technical abilities but also instilled a strong work ethic and time management skills. This unique blend of real-world work experience and self-taught programming expertise makes me a versatile and committed candidate.",
   items: [
     {
       company: "Tech Solutions Inc.",
@@ -99,7 +99,7 @@ const education = {
   icon: "/assets/vercel.svg",
   title: "My Education",
   description:
-    "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dignissimos doloremque harum reprehenderit corrupti, mollitia qui. Deserunt, sint!",
+    "I took the traditional route from high school to college, initially unsure about my career path. I majored in Human Development with the goal of becoming an Occupational Therapist and also pursued a double minor in Philosophy and Creative Writing Poetry, even managing to get 3 poems published! However, post-college, I realized that path wasn't for me. I stumbled upon programming and was instantly hooked by the creativity it offered — something I hadn't expected. It's a field that blends analytical skills with creative flair, making it a very appealing career choice.",
   items: [
     {
       institution: "Online Course Platform",
@@ -111,6 +111,16 @@ const education = {
       degree: "BA Human Development",
       duration: "2014 - 2018",
     },
+    {
+      institution: "Eckerd College",
+      degree: "Minor: Creative Writing Poetry",
+      duration: "2014 - 2018",
+    },
+    {
+      institution: "Eckerd College",
+      degree: "Minor: Logical Philosophy",
+      duration: "2014 - 2018",
+    },
   ],
 };
 
@@ -119,7 +129,7 @@ const education = {
 const skills = {
   title: "My Skills",
   description:
-    "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dignissimos doloremque harum reprehenderit corrupti, mollitia qui. Deserunt, sint!",
+    "I love to learn and am constantly expanding on my skills. My skill set spans a wide range of programming languages including React, JavaScript, several CSS libraries as well as NextJS and Vite. But I am always learning. If there is a new framework that would benefit me or is required for a project, I will take the time to master that skill. 'Education is not the filling of a pail, but the lighting of a fire'.",
   skillList: [
     {
       icon: <FaHtml5 />,

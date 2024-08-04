@@ -28,6 +28,7 @@ const Photo = () => {
             priority
             quality={100}
             fill
+            sizes="50vw"
             alt=""
             className="object-contain rounded-full"
           />
