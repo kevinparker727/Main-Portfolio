@@ -14,7 +14,7 @@ const socials = [
   },
   {
     icon: <FaEnvelope />,
-    path: "/contact",
+    path: "mailto:kevin.parker.727@gmail.com",
   },
 ];
 

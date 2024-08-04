@@ -190,12 +190,11 @@ const Resume = () => {
 
           <div className="min-h-[70vh] w-full">
             {/* about  */}
-            {/* whenever you click on the about tab on the site, the entire menu slides down slightly */}
             <TabsContent
               value="about"
               className="w-full text-center xl:text-left"
             >
-              <div className="flex flex-col gap-[30px] bg-pink-50/20 rounded-xl xl:mr-[100px] p-8">
+              <div className="flex flex-col gap-[30px] bg-pink-50/20 rounded-xl xl:mr-[100px] p-8 hover:">
                 <h3 className="text-4xl font-semi-bold border-b-2 pb-4">
                   {about.title}
                 </h3>
@@ -220,19 +219,6 @@ const Resume = () => {
                   mountain biking, whitewater kayaking, and baking. Shoot me an
                   email and let's get your project started!
                 </p>
-                {/* <ul className="grid grid-cols-1 xl:grid-cols-2 gap-y-6  max-w-[620px] mx-auto xl:mx-0">
-                  {about.info.map((item, index) => {
-                    return (
-                      <li
-                        key={index}
-                        className="flex items-center justify-center xl:justify-start gap-4"
-                      >
-                        <span className="text-white/60">{item.fieldName}:</span>
-                        <span className="text-xl">{item.fieldValue}</span>
-                      </li>
-                    );
-                  })}
-                </ul> */}
               </div>
             </TabsContent>
 

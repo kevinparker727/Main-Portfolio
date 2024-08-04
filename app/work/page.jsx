@@ -192,7 +192,7 @@ const hobbies = [
     category: "hobbies",
     title: "Mountain Biking",
     description:
-      "I bought my first mountain bike at the end of 2021 when I was living in Flagstaff, AZ. I learned how to ride in Flagstaff and Sedona, two of the best places in the country to rid. From my first ride, I knew this would be a hobby for life.",
+      "I bought my first mountain bike at the end of 2021 when I was living in Flagstaff, AZ. I learned how to ride in Flagstaff and Sedona, two of the best places in the country to ride. From my first ride, I knew this would be a hobby for life.",
     stack: [
       { name: "ReactJS" },
       { name: "TypeScript" },
