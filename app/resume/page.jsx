@@ -285,8 +285,8 @@ const Resume = () => {
                     versatile and committed candidate.
                   </p>
                   <p className="max-w-[600px] text-white/80 mx-auto xl:mx-0 leading-6 tracking-tighter text-xs font-extralight">
-                    // Below you'll find an abbreivated list of some of the jobs
-                    I have maintained while learning how to program. //
+                    Below you'll find an abbreivated list of some of the jobs I
+                    have maintained while learning how to program.
                   </p>
                 </div>
                 <ScrollArea className="h-[400px]">
@@ -341,8 +341,8 @@ const Resume = () => {
                     myself and ready to begin a career in programming.
                   </p>
                   <p className="max-w-[600px] text-white/80 mx-auto xl:mx-0 leading-6 tracking-tighter text-xs font-extralight">
-                    // Below you'll find an abbreivated list of some of the more
-                    impactful courses I have taken during this journey. //
+                    Below you'll find an abbreivated list of some of the more
+                    impactful courses I have taken during this journey.
                   </p>
                 </div>
                 <ScrollArea className="h-[400px]">
