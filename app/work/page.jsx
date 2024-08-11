@@ -23,7 +23,7 @@ const apps = [
     category: "application",
     title: "Data Dashboard",
     description:
-      "I'm proud of this one. Dashboard app which allows companies to input large amounts of data for the app to organize and display in well-organized and aesthetically appealing graphs and charts. Login authentication completed with NextAuth.",
+      "I'm proud of this one. This is dashboard app which allows companies to input large amounts of data for the app to organize and display in well thought out and aesthetically appealing graphs and charts. Login authentication completed with NextAuth.",
     stack: [
       { name: "ReactJS" },
       { name: "TypeScript" },
@@ -42,7 +42,7 @@ const apps = [
     category: "application",
     title: "Kanban Board",
     description:
-      "If the Data Dashboard didn't exist, this would be my favorite project. It's a drag and drop application with a beautiful and simple UI/UX. Feel free to add or remove columns and add or remove items from each column. You are also capable of labeling each column and moving items from one column to another.",
+      "If the Data Dashboard didn't exist, this would be my favorite project. It's a drag and drop application with a beautiful and simple UI/UX. Feel free to add or remove columns and items. You are also capable of labeling each column and moving items from one column to another.",
     stack: [
       { name: "ReactJS" },
       { name: "TypeScript" },
@@ -60,8 +60,7 @@ const apps = [
     num: "03",
     category: "application",
     title: "Bankist",
-    description:
-      "(You can log in with any of the following credentials: user: JS, pin: 1111; user: JD, pin: 2222; user: STW, pin: 3333; user: SS, pin: 4444;). This is one of the earlier pages I made when I had just learned JavaScript.  Try making transfers, requesting loans, and adding deposits!",
+    description: `// You can log in with any or multiple of the following user credentials: user: JS, pin: 1111; user: JD, pin: 2222; user: STW, pin: 3333; user: SS, pin: 4444. // This is one of the earlier pages I made when I had just learned JavaScript.  Try making transfers, requesting loans, and adding deposits!`,
     stack: [
       { name: "ReactJS" },
       { name: "TypeScript" },
@@ -78,7 +77,7 @@ const apps = [
     category: "application",
     title: "Mapty",
     description:
-      "Click on the map in your location to bring up the workout form. This was a fun one to make. I was in a place when I was not working out and not very active and this app really pushed me to get back to the gym. I guess writing 'workout' so many times will have an effect!",
+      "// Click on the map in your location to bring up the workout form. // This was a fun one to make. I was in a place when I was not working out or very active and this app really pushed me to get back to the gym. I guess thinking about running and writing 'workout' so many times will have an effect!",
     stack: [{ name: "JavaScript" }, { name: "HTML5" }, { name: "CSS3" }],
     image: "/assets/mapty.jpeg",
     live: "https://mapty-app-lime.vercel.app/",
@@ -110,7 +109,7 @@ const landingPages = [
     category: "landing page",
     title: "Forkify",
     description:
-      "A fun recipe website application. There are hundreds of preloaded recipes from an API, but after loggin in, you are also able to add and remove your own recipes as well as save preloaded recipes to your profile.",
+      "This is a fun recipe website. There are hundreds of preloaded recipes from an API, but after logging in, you are also able to add and remove your own recipes as well as save preloaded recipes to your profile. You can also adjust the ingredient quantites based on the amount of people you are cooking for.",
     stack: [{ name: "JavaScript" }, { name: "HTML5" }, { name: "CSS3" }],
     image: "/assets/forkify.jpeg",
     live: "https://forkify-app-amber.vercel.app/",
@@ -121,7 +120,7 @@ const landingPages = [
     category: "landing page",
     title: "Bankist",
     description:
-      "This is a landing page developed in conjunction with the Bankist application. There are several types of scroll and modal menus as well as smooth scrolling depeing on which buttons are clicked. Although creating an account here has no functionality, you can still access the Bankist app with the credentials located in the app's description.",
+      "This is a landing page developed in conjunction with the Bankist application. There are several types of scroll and modal menus as well as smooth scrolling depending on which buttons are clicked. Although creating an account here has no functionality, you can still access the Bankist app with the credentials located in the app's description.",
     stack: [{ name: "JavaScript" }, { name: "HTML5" }, { name: "CSS" }],
     image: "/assets/bankist-landing.jpeg",
     live: "https://advanced-bankist.vercel.app/",
@@ -157,7 +156,7 @@ const HTMLEmails = [
     category: "html email",
     title: "KitchenAid E-Commerce",
     description:
-      "No kitchen is complete wihtout a KitchenAid stand mixer. Not only is this email advertising some very beautful colors for their mixers, but it's also a place to show buyers some purhcasing guides.",
+      "No kitchen is complete wihtout a KitchenAid stand mixer. Not only is this email advertising some very beautful colors for their machines, but it's also a place to show buyers some purhcasing guides.",
     stack: [{ name: "HTML5" }, { name: "Inline CSS" }],
     image: "/assets/kitchenAid.jpeg",
     live: "https://kitchenaid-email.vercel.app/",
@@ -193,30 +192,18 @@ const hobbies = [
     title: "Mountain Biking",
     description:
       "I bought my first mountain bike at the end of 2021 when I was living in Flagstaff, AZ. I learned how to ride in Flagstaff and Sedona, two of the best places in the country to ride. From my first ride, I knew this would be a hobby for life.",
-    stack: [
-      { name: "ReactJS" },
-      { name: "TypeScript" },
-      { name: "HTML5" },
-      { name: "TailwindCSS" },
-      { name: "Vite" },
-    ],
+
     live: "",
     github: "",
-    image: "/assets/biking.jpg",
+    image: "/assets/mtb.jpeg",
   },
   {
     num: "03",
     category: "hobbies",
     title: "Baking",
     description:
-      "Before I became a programmer, I had a job at a bakery. I was one of only three full-time employees and I was given close to free reign over what I baked. The owner taught me more than I could have imagined. The grasshopper cakes in the first picture are the most impressive thing I ever baked there, but the chocolate chip cookies were the best I have ever had.",
-    stack: [
-      { name: "ReactJS" },
-      { name: "TypeScript" },
-      { name: "HTML5" },
-      { name: "TailwindCSS" },
-      { name: "Vite" },
-    ],
+      "Before I became a programmer, I had a job at a bakery. I was one of only three full-time employees and I was given close to free reign over what I baked. The owner taught me more than I could have imagined. The grasshopper cakes in the picture are the most impressive thing I ever baked there, but the chocolate chip cookies were easily the best I have ever had.",
+
     live: "",
     github: "",
     image: "/assets/baking.jpeg",
@@ -316,6 +303,7 @@ const Work = () => {
                                   fill
                                   className="object-contain"
                                   alt=""
+                                  sizes=""
                                 />
                               </div>
                             </div>
@@ -356,6 +344,7 @@ const Work = () => {
                                   fill
                                   className="object-contain"
                                   alt=""
+                                  sizes=""
                                 />
                               </div>
                             </div>
@@ -396,6 +385,7 @@ const Work = () => {
                                   fill
                                   className="object-contain"
                                   alt=""
+                                  sizes=""
                                 />
                               </div>
                             </div>
@@ -436,6 +426,7 @@ const Work = () => {
                                   fill
                                   className="object-contain"
                                   alt=""
+                                  sizes=""
                                 />
                               </div>
                             </div>

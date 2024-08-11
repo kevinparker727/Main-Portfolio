@@ -61,34 +61,52 @@ const experience = {
     "Despite not having formal programming employment, I have dedicated significant time to developing several projects, showcasing my coding skills. Alongside programming, I have maintained various part-time jobs, in order to survive until I break into the programming field. My typical weekly schedule involves working four days at part-time jobs and devoting three full days to programming. This self-driven approach has not only enhanced my technical abilities but also instilled a strong work ethic and time management skills. This unique blend of real-world work experience and self-taught programming expertise makes me a versatile and committed candidate.",
   items: [
     {
-      company: "Tech Solutions Inc.",
-      position: "Full Stack Developer",
-      duration: "2022 - Present",
+      company: "US Whitewater Center",
+      position: "Raft Guide",
+      duration: "03/24 - Present",
+      location: "Charlotte, NC",
     },
     {
-      company: "Web Design Studios",
-      position: "Web Developer",
-      duration: "2018 - 2022",
+      company: "Saskadena Six",
+      position: "Ski Tech",
+      duration: "12/23 - 03/24",
+      location: "Woodstock, VT",
     },
     {
-      company: "E-Commerce Startup",
-      position: "Front End Developer Intern",
-      duration: "2017 - 2018",
+      company: "Moon Dance Farm",
+      position: "Farm Hand",
+      duration: "09/23 - 12/23",
+      location: "Hartland, VT",
     },
     {
-      company: "Tech Academy",
-      position: "Teaching Assistant",
-      duration: "2016 - 2017",
+      company: "The Thirsty Pig",
+      position: "Bartender",
+      duration: "05/23 - 09/23",
+      location: "Portland, ME",
     },
     {
-      company: "Digital Agency",
-      position: "UI/UX Designer",
-      duration: "2016 - 2018",
+      company: "Delicate Decadence",
+      position: "Baker",
+      duration: "01/23 - 05/23",
+      location: "Barre, VT",
     },
     {
-      company: "Software Development Firm",
-      position: "Web Developer",
-      duration: "2015 - 2016",
+      company: "The Adventure Company",
+      position: "Raft Gudie",
+      duration: "05/22 - 09/22",
+      location: "Buena Vista, CO",
+    },
+    {
+      company: "Moenkopi Riverworks",
+      position: "Head of Drysuits",
+      duration: "09/21 - 05/22",
+      location: "Flagstaff, AZ",
+    },
+    {
+      company: "McCarthy River Tours",
+      position: "Raft Gudie",
+      duration: "05/21 - 09/21",
+      location: "McCarthy, AK",
     },
   ],
 };
@@ -102,24 +120,34 @@ const education = {
     "I took the traditional route from high school to college, initially unsure about my career path. I majored in Human Development with the goal of becoming an Occupational Therapist and also pursued a double minor in Philosophy and Creative Writing Poetry, even managing to get 3 poems published! However, post-college, I realized that path wasn't for me. I stumbled upon programming and was instantly hooked by the creativity it offered — something I hadn't expected. It's a field that blends analytical skills with creative flair, making it a very appealing career choice.",
   items: [
     {
-      institution: "Online Course Platform",
-      degree: "Self Taught - Front End",
-      duration: "2022 - Present",
-    },
-    {
       institution: "Eckerd College",
       degree: "BA Human Development",
       duration: "2014 - 2018",
     },
     {
       institution: "Eckerd College",
-      degree: "Minor: Creative Writing Poetry",
+      degree: "Minor: Creative Writing - Poetry",
       duration: "2014 - 2018",
     },
     {
       institution: "Eckerd College",
       degree: "Minor: Logical Philosophy",
       duration: "2014 - 2018",
+    },
+    {
+      institution: "Dani Krossing",
+      degree: "HTML and CSS Intensive Course",
+      duration: "11/22 - 02/23",
+    },
+    {
+      institution: "Jonas Schmedtmann",
+      degree: "JavaScript Intensive Course",
+      duration: "05/23 - 08/23",
+    },
+    {
+      institution: "Pedro Machado",
+      degree: "React Intensive Course",
+      duration: "09/23 - 10/23",
     },
   ],
 };
@@ -202,9 +230,9 @@ const Resume = () => {
             {/* about  */}
             <TabsContent
               value="about"
-              className="w-full text-center xl:text-left"
+              className="w-full text-center xl:text-left mb-10"
             >
-              <div className="flex flex-col gap-[30px] bg-pink-50/20 rounded-xl xl:mr-[100px] p-8 hover:">
+              <div className="flex flex-col gap-[30px] bg-pink-50/20 rounded-xl xl:mr-[100px] p-8 hover:scale-105 hover:bg-pink-50/25 transition-all duration-500">
                 <h3 className="text-4xl font-semi-bold border-b-2 pb-4">
                   {about.title}
                 </h3>
@@ -215,9 +243,10 @@ const Resume = () => {
                   {" "}
                   My name is Kevin Parker. I am a front-end web developer
                   specializing in React. My main focus is landing pages and
-                  apps, but I also have plenty of experience in HTMl emails. I
-                  have also styled for specialty clients such as Outlook and
-                  Internet Explorer while using a mobile-first design concept.{" "}
+                  apps, but I also have plenty of experience designing HTMl
+                  emails. I have also styled for specialty clients such as
+                  Outlook and Internet Explorer all while using a mobile-first
+                  design concept.{" "}
                 </p>{" "}
                 <p className="max-w-[600px] text-white/80 mx-auto xl:mx-0">
                   {" "}
@@ -235,25 +264,50 @@ const Resume = () => {
             {/* experience  */}
             <TabsContent value="experience" className="w-full">
               <div className="flex flex-col gap-[30px] text-center xl:text-left mb-10">
-                <h3 className="text-4xl font-bold">{experience.title}</h3>
-                <p className="max-w-[600px] text-white/60 mx-auto xl:mx-0">
-                  {experience.description}
-                </p>
-                <ScrollArea className="h-[400px] ">
+                <div className="flex flex-col gap-[20px] xl:mr-[100px] pr-6 pb-6 hover:scale-105 transition-all duration-500">
+                  <h3 className="text-4xl font-bold border-b-2 pb-4 xl:mr-20">
+                    {experience.title}
+                  </h3>
+                  <p className="max-w-[600px] text-white/80 mx-auto xl:mx-0 leading-9 tracking-normal">
+                    Despite not having formal programming employment, I have
+                    dedicated significant time to developing several projects,
+                    showcasing my coding skills. Alongside programming, I have
+                    maintained various part-time jobs, in order to get by only
+                    until I break into the programming field.
+                  </p>
+                  <p className="max-w-[600px] text-white/80 mx-auto xl:mx-0 leading-9 tracking-normal">
+                    My typical weekly schedule involves working four days at
+                    part-time jobs and devoting three full days to programming.
+                    This self-driven approach has not only enhanced my technical
+                    abilities but also instilled a strong work ethic and time
+                    management skills. This unique blend of real-world work
+                    experience and self-taught programming expertise makes me a
+                    versatile and committed candidate.
+                  </p>
+                  <p className="max-w-[600px] text-white/80 mx-auto xl:mx-0 leading-6 tracking-tighter text-xs font-extralight">
+                    // Below you'll find an abbreivated list of some of the jobs
+                    I have maintained while learning how to program. //
+                  </p>
+                </div>
+                <ScrollArea className="h-[400px]">
                   <ul className="grid grid-cols-1 xl:grid-cols-2 gap-[30px]">
                     {experience.items.map((item, index) => {
                       return (
                         <li
                           key={index}
-                          className="bg-[#262629] h-[184px] py-6 px-10 rounded-xl flex flex-col justify-center items-center lg:items-start gap-1"
+                          className="bg-[#262629] h-[184px] py-6 px-10 rounded-xl flex flex-col justify-center items-center lg:items-start"
                         >
                           <span className="text-accent">{item.duration}</span>
-                          <h3 className="text-xl max-w-[260px] min-h-[60px] text-center lg:text-left">
+                          <h3 className="text-xl max-w-[260px] min-h-[40px] text-center lg:text-left">
                             {item.position}
                           </h3>
                           <div className="flex items-center gap-3">
                             <span className="w-[6px] h-[6px] rounded-full bg-accent"></span>
                             <p className="text-white/60">{item.company}</p>
+                          </div>
+                          <div className="flex items-center gap-3">
+                            <span className="w-[6px] h-[6px] rounded-full bg-accent"></span>
+                            <p className="text-white/60">{item.location}</p>
                           </div>
                         </li>
                       );
@@ -265,12 +319,33 @@ const Resume = () => {
 
             {/* education  */}
             <TabsContent value="education" className="w-full">
-              <div className="flex flex-col gap-[30px] text-center xl:text-left">
-                <h3 className="text-4xl font-bold">{education.title}</h3>
-                <p className="max-w-[600px] text-white/60 mx-auto xl:mx-0">
-                  {education.description}
-                </p>
-                <ScrollArea className="h-[400px] ">
+              <div className="flex flex-col gap-[30px] text-center xl:text-left mb-10">
+                <div className="flex flex-col gap-[0px] xl:mr-[100px] pr-6 pb-0 hover:scale-105 transition-all duration-500">
+                  <h3 className="text-4xl font-bold border-b-2 pb-4 xl:mr-20">
+                    {education.title}
+                  </h3>
+                  <p className="max-w-[600px] text-white/80 mx-auto xl:mx-0 leading-9 tracking-normal pb-6 pt-6">
+                    I took the traditional route from high school to college,
+                    initially unsure about my career path. I majored in Human
+                    Development with the goal of becoming an Occupational
+                    Therapist and also pursued a double minor in Philosophy and
+                    Poetry, even managing to get 3 poems published! However,
+                    post-college, I realized that path wasn't for me.
+                  </p>
+                  <p className="max-w-[600px] text-white/80 mx-auto xl:mx-0 leading-9 tracking-normal pb-10">
+                    I stumbled upon programming and was instantly hooked by the
+                    creativity it offered — something I hadn't expected. It's a
+                    field that blends analytical skills with creative flair,
+                    making it a very appealing career choice. After nearly two
+                    years of hard word, I am feeling very accomplished with
+                    myself and ready to begin a career in programming.
+                  </p>
+                  <p className="max-w-[600px] text-white/80 mx-auto xl:mx-0 leading-6 tracking-tighter text-xs font-extralight">
+                    // Below you'll find an abbreivated list of some of the more
+                    impactful courses I have taken during this journey. //
+                  </p>
+                </div>
+                <ScrollArea className="h-[400px]">
                   <ul className="grid grid-cols-1 xl:grid-cols-2 gap-[30px]">
                     {education.items.map((item, index) => {
                       return (
@@ -297,10 +372,21 @@ const Resume = () => {
             {/* skills  */}
             <TabsContent value="skills" className="w-full h-full">
               <div className="flex flex-col gap-[30px] mb-10">
-                <div className="flex flex-col gap-[30px] text-center xl:text-left">
-                  <h3 className="text-4xl font-bold">{skills.title}</h3>
-                  <p className="max-w-[600px] text-white/60 mx-auto xl:mx-0">
-                    {skills.description}
+                <div className="flex flex-col gap-[30px] text-center xl:text-left hover:scale-105 transition-all duration-500">
+                  <h3 className="text-4xl font-bold border-b-2 pb-4 xl:mr-[190px]">
+                    {skills.title}
+                  </h3>
+                  <p className="max-w-[600px] text-white/80 mx-auto xl:mx-0 leading-9 tracking-normal">
+                    I love to learn and am constantly expanding on my skills. My
+                    skill set spans a wide range of programming languages
+                    including React, JavaScript, several CSS libraries as well
+                    as NextJS and Vite. But I am always learning. If there is a
+                    new framework that would benefit me or is required for a
+                    project, I will take the time to master that skill.
+                  </p>
+                  <p className="max-w-[600px] text-white/80 mx-auto xl:mx-0 leading-9 tracking-normal text-sm">
+                    'Education is not the filling of a pail, but the lighting of
+                    a fire.'
                   </p>
                 </div>
                 <ul className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4 xl:gap-[30px]">
@@ -309,8 +395,8 @@ const Resume = () => {
                       <li key={index}>
                         <TooltipProvider delayDuration={100}>
                           <Tooltip>
-                            <TooltipTrigger className="w-full h-[150px] bg-[#232329] rounded-xl flex justify-center items-center group">
-                              <div className="text-6xl group-hover:text-accent transition-all duration-300">
+                            <TooltipTrigger className="w-full h-[150px] bg-[#232329] rounded-xl flex justify-center items-center group cursor-default">
+                              <div className="text-6xl group-hover:text-accent transition-all duration-300 cursor-default">
                                 {skill.icon}
                               </div>
                             </TooltipTrigger>

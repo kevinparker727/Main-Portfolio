@@ -9,7 +9,7 @@ const DownloadButton = () => {
         size="lg"
         className="flex
         items-center
-        gap-2"
+        gap-2 transition-all duration-500"
         target="_blank"
       >
         <span className="mr-3">Download CV</span>

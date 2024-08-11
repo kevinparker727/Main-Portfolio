@@ -72,9 +72,10 @@ const Contact = () => {
                 Let&apos;s work together!
               </h3>
               <p className="text-white/60">
-                Thanks for reaching out! I'm currently accepting job offers for
-                both in-office, hybrid, and fully remote work and am willing to
-                relocate. Shoot me a message, and let's talk about your project!
+                Thanks for taking the time to look through my portfolio! I'm
+                currently accepting job offers for both in-office, hybrid, and
+                fully remote work and am willing to relocate. Shoot me a
+                message, and let's talk about your project!
               </p>
               {/* input  */}
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
